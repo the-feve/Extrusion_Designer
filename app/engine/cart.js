@@ -17,7 +17,7 @@ export const CART_DEFAULTS = {
   length: 36,         // outside of frame, y
   height: 30,         // floor to top of frame (casters included)
   profile: '1515',
-  caster: 'caster-placeholder', // null = frame stands on the post ends
+  caster: '47065T336', // null = frame stands on the post ends
   shelves: 0,         // intermediate shelves between bottom and top
   shelfHeights: null, // optional: floor to top of each shelf's rails, inches
   bottomLift: null,   // post below the bottom rails; null = one bracket leg, so its brackets go underneath

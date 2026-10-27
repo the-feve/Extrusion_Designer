@@ -15,7 +15,7 @@ import { clashes } from '../app/engine/geom.js';
 import { parseLength, fracIn, ftIn } from '../app/engine/units.js';
 
 const catalog = makeCatalog(JSON.parse(fs.readFileSync(new URL('../app/data/catalog.json', import.meta.url))));
-const caster = catalog.part('caster-placeholder');
+const caster = catalog.part('47065T336');
 
 test('default cart: 24 x 36 x 30 builds with no errors', () => {
   const d = buildCart(catalog, {});
@@ -126,7 +126,7 @@ test('BOM: brackets = 8 per level, casters 4, posts tapped', () => {
   assert.equal(b.lines.find((l) => l.kind === 'caster').qty, 4);
   const posts = b.cuts.find((c) => c.roles.includes('post'));
   assert.equal(posts.qty, 4);
-  assert.match(posts.ops[0], /Tap bottom end/);
+  assert.match(posts.ops[0], /tap bottom end 3\/8"-16/);
   // Total rail in the cut list = total member length.
   const cutTotal = b.cuts.reduce((a, c) => a + c.qty * c.length, 0);
   const memberTotal = d.members.reduce((a, m) => a + m.length, 0);
@@ -159,7 +159,7 @@ test('exports: McMaster paste lists part numbers and flags parts without one', (
   const paste = mcmasterPaste(b);
   assert.match(paste.text, /^4658N49\t\d+$/m);
   assert.match(paste.text, /^47065T845\t16$/m);
-  assert.equal(paste.missing.length, 1); // the placeholder caster
+  assert.equal(paste.missing.length, 0);
   assert.match(bomCsv(b), /47065T845,16,/);
   assert.match(cutListCsv(b), /^A,4,33\.0000/m);
 });

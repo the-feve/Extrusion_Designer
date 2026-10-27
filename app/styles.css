@@ -120,3 +120,4 @@ ol.steps li { margin-bottom: 6px; }
   .paper svg { width: 100%; height: auto; min-width: 0; }
   @page { size: 17in 11in; margin: 0.25in; }
 }
+.top-actions label.button { margin: 0; color: var(--text); font-size: inherit; }

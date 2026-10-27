@@ -184,7 +184,8 @@ export function drawingSvg(design, opts = {}) {
 export function assemblyNotes(design, b) {
   const n = [];
   n.push('All dimensions in inches. Heights are from the floor to the top of the rails.');
-  if (design.ops.some((o) => o.op === 'tap')) n.push(`Tap the bottom end of each post ${design.ops[0].text.match(/\d+\/\d+"-\d+/)?.[0] || ''} for the caster stems (center hole is the tap drill).`);
+  const tap = design.ops.find((o) => o.op === 'tap');
+  if (tap) n.push(`Caster stems: drill the post's 0.262" center hole out to 5/16" and tap ${tap.thread} at the bottom end, about 1-3/4" deep.`);
   if (design.hardware.some((h) => h.kind === 'corner-bracket')) n.push('Bracket fasteners are end-feed: slide the nuts into the slots from a rail end before closing each ring of rails.');
   n.push('Square each level before tightening; check diagonals match.');
   if (b.plans && Object.keys(b.plans).length) {

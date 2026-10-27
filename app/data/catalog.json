@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-10-27",
-  "note": "Prices, part numbers and sizes from mcmaster.com. Anything with \"verified\": false is a placeholder until checked on McMaster. Research notes: docs/research/.",
+  "note": "Part numbers and sizes from mcmaster.com and the owner's screenshots. \"verified\": false means not yet checked in a browser. Research: docs/research/mcmaster-1.5-series.md. Prices are shown only where the owner has checked them.",
   "profiles": {
     "1515": {
       "name": "1-1/2\" x 1-1/2\" T-slotted rail, single four slot, smooth, silver",
@@ -20,7 +20,6 @@
       "slotOpening": 0.32,
       "slotDepth": 0.484,
       "centerHoleDia": 0.262,
-      "endTapThread": "5/16\"-18",
       "material": "6063-T6 anodized aluminum",
       "weightLbPerFt": 1.03,
       "url": "https://www.mcmaster.com/4658N41/",
@@ -36,7 +35,8 @@
       "cutToLength": null,
       "verified": true,
       "weightNote": "Computed from the STEP section (0.880 in2) at 0.0975 lb/in3; McMaster does not list it.",
-      "geometry": "geometry/rail-1515.json"
+      "centerHoleNote": "0.262\" center hole is the tap drill for 5/16\"-18. McMaster stem casters and leveling feet are 3/8\"-16, so the end is drilled 5/16\" and tapped 3/8\"-16.",
+      "cutToLengthNote": "McMaster has no cut-to-length version of this smooth hollow rail (2026-10-27 research); 47065T808 is grooved hollow cut to length."
     }
   },
   "parts": {
@@ -60,25 +60,51 @@
       ],
       "fastenerInstall": "end-feed",
       "url": "https://www.mcmaster.com/47065T845/",
-      "verified": true,
-      "geometry": "geometry/bracket-47065T845.json"
+      "verified": true
     },
-    "caster-placeholder": {
+    "47065T336": {
       "kind": "caster",
-      "pn": null,
-      "name": "Stem caster for 5/16\"-18 tapped rail end (pick a McMaster part)",
-      "priceUsd": null,
       "mount": "stem",
-      "thread": "5/16\"-18",
-      "mountHeight": 5.0,
-      "wheelDia": 4.0,
+      "thread": "3/8\"-16",
+      "stemLength": 1.5,
+      "wheelDia": 3.0,
+      "wheelMaterial": "rubber",
+      "brake": true,
+      "swivel": true,
+      "mountHeight": 4.0,
+      "mountHeightVerified": false,
       "footprint": [
-        2.0,
-        2.0
+        1.75,
+        1.75
       ],
-      "swivelRadius": 3.0,
+      "priceUsd": null,
       "verified": false,
-      "note": "Sizes are guesses until a real caster is chosen."
+      "note": "Mounting height (floor to the top of the caster, where it meets the rail end) is a guess until checked on the McMaster page or 2D PDF.",
+      "name": "Threaded-stem swivel caster, 3\" rubber wheel, wheel brake, 125 lb",
+      "capacityLb": 125,
+      "url": "https://www.mcmaster.com/47065T336/"
+    },
+    "47065T919": {
+      "kind": "caster",
+      "mount": "stem",
+      "thread": "3/8\"-16",
+      "stemLength": 1.5,
+      "wheelDia": 3.0,
+      "wheelMaterial": "rubber",
+      "brake": true,
+      "swivel": true,
+      "mountHeight": 4.0,
+      "mountHeightVerified": false,
+      "footprint": [
+        1.75,
+        1.75
+      ],
+      "priceUsd": null,
+      "verified": false,
+      "note": "Mounting height (floor to the top of the caster, where it meets the rail end) is a guess until checked on the McMaster page or 2D PDF.",
+      "name": "Threaded-stem swivel caster, 3\" rubber wheel, wheel brake, 200 lb",
+      "capacityLb": 200,
+      "url": "https://www.mcmaster.com/47065T919/"
     }
   }
 }

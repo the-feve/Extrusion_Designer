@@ -1,14 +1,15 @@
 // 3D view (three.js). Model space is the engine's: inches, z up. Rails are
-// the real McMaster section (data/geometry/rail-1515.json) extruded; brackets
-// are the mesh from the STEP file; casters and decks are simple shapes.
+// our drawn 1-1/2" section extruded, brackets our drawn L profile
+// (shapes.js); casters and decks are simple shapes.
 
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { railSection1515, bracketProfile } from './shapes.js';
 
 const COLORS = { rail: 0xc9ced4, bracket: 0x9aa4ae, caster: 0x3a3d42, wheel: 0x1f2124, deck: 0xc9a56b, bad: 0xf08a6e, pick: 0xe0a93b };
 
 export class View3D {
-  constructor(el, { railSection, bracketMesh } = {}) {
+  constructor(el) {
     this.el = el;
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -35,8 +36,8 @@ export class View3D {
       deck: new THREE.MeshStandardMaterial({ color: COLORS.deck, roughness: 0.85, transparent: true, opacity: 0.92 }),
       bad: new THREE.MeshStandardMaterial({ color: COLORS.bad, emissive: 0x5a1a0a, roughness: 0.5 }),
     };
-    this.railGeom = railSection ? railGeometry(railSection) : new THREE.BoxGeometry(1.5, 1.5, 1);
-    this.bracketGeom = bracketMesh ? meshGeometry(bracketMesh) : null;
+    this.railGeom = railGeometry(railSection1515());
+    this.bracketGeom = bracketGeometry(1.31);
     this.byOwner = new Map();
     this.showDecks = true;
     new ResizeObserver(() => this.resize()).observe(el);
@@ -111,25 +112,14 @@ export class View3D {
 
   bracket(h) {
     const { corner, dirA, dirB } = h.geometry.frame;
-    if (!this.bracketGeom) {
-      const g = new THREE.Group();
-      for (const b of h.solids) {
-        const s = b.max.map((v, i) => v - b.min[i]);
-        const m = new THREE.Mesh(new THREE.BoxGeometry(...s), this.mats.bracket);
-        m.position.set(...b.min.map((v, i) => v + s[i] / 2));
-        m.userData.mat = 'bracket';
-        g.add(m);
-      }
-      return g;
-    }
-    // Mesh frame: inside corner at the origin, leg A along +X, leg B along +Z,
-    // outside faces at -0.25. World: corner + (X + t) dirA + Y w + (Z + t) dirB,
-    // with w = dirB x dirA so the basis stays right-handed.
+    // Profile frame: inside corner at the origin, leg A along +x, leg B along
+    // +y, outside faces at -t, width along z. World: corner + (x + t) dirA +
+    // (y + t) dirB + z w, with w = dirA x dirB so the basis is right-handed.
     const A = new THREE.Vector3(...dirA), B = new THREE.Vector3(...dirB);
-    const w = new THREE.Vector3().crossVectors(B, A);
+    const w = new THREE.Vector3().crossVectors(A, B);
     const t = 0.25;
     const origin = new THREE.Vector3(...corner).addScaledVector(A, t).addScaledVector(B, t);
-    const m = new THREE.Matrix4().makeBasis(A, w, B).setPosition(origin);
+    const m = new THREE.Matrix4().makeBasis(A, B, w).setPosition(origin);
     const mesh = new THREE.Mesh(this.bracketGeom, this.mats.bracket);
     mesh.matrixAutoUpdate = false;
     mesh.matrix.copy(m);
@@ -175,10 +165,10 @@ function railGeometry(sec) {
   return g;
 }
 
-function meshGeometry(m) {
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(m.positions, 3));
-  g.setIndex(m.indices);
+function bracketGeometry(width) {
+  const shape = new THREE.Shape(bracketProfile().map(([x, y]) => new THREE.Vector2(x, y)));
+  const g = new THREE.ExtrudeGeometry(shape, { depth: width, bevelEnabled: false, curveSegments: 1 });
+  g.translate(0, 0, -width / 2);
   g.computeVertexNormals();
   return g;
 }

@@ -206,7 +206,8 @@ export function addStemCaster(design, post, end, partId) {
   const body = { min: [cx - fx / 2, cy - fy / 2, Math.min(z0, z1)], max: [cx + fx / 2, cy + fy / 2, Math.max(z0, z1)] };
   const h = { id: nextId('C'), kind: 'caster', part: part.id, pn: part.pn, member: post.id, end, name: `Caster under ${post.name}`, solids: [body] };
   design.hardware.push(h);
-  design.ops.push({ member: post.id, end, op: 'tap', text: `Tap ${end === 'start' ? 'bottom' : 'top'} end ${part.thread || '5/16"-18'} for caster stem` });
+  const thread = part.thread || '3/8"-16';
+  design.ops.push({ member: post.id, end, op: 'tap', thread, text: `Drill and tap ${end === 'start' ? 'bottom' : 'top'} end ${thread} for caster stem` });
   return h;
 }
 
