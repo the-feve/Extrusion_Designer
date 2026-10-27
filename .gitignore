@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# McMaster CAD files and anything copied from them stay local: McMaster's
+# terms don't allow redistributing CAD models (docs/research/mcmaster-1.5-series.md).
+reference/mcmaster/
+app/data/geometry/

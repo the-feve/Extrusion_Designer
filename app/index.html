@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extrusion Designer · Quiver Design Works</title>
+  <meta name="description" content="Design carts and fixtures from McMaster-Carr 1-1/2 inch T-slotted framing: 3D view, cut list, BOM, 2D drawing and a McMaster order list.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">
+    { "imports": {
+      "three": "./vendor/three/build/three.module.min.js",
+      "three/addons/": "./vendor/three/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="https://quiverdesignworks.net/">Quiver Design Works</a>
+    <h1>Extrusion Designer <span class="badge">Beta</span></h1>
+    <nav class="top-actions">
+      <button id="share" type="button">Copy share link</button>
+      <button id="save" type="button">Save design</button>
+      <label class="button" for="load">Open design<input id="load" type="file" accept=".json,application/json" hidden></label>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="panel" aria-label="Design settings">
+      <section>
+        <h2>Cart</h2>
+        <p class="hint">1-1/2" T-slotted rail from McMaster-Carr. Type inches, feet (2' 6") or mm.</p>
+        <div class="grid3">
+          <label>Width<input id="width" inputmode="decimal" value="24"></label>
+          <label>Length<input id="length" inputmode="decimal" value="36"></label>
+          <label>Height<input id="height" inputmode="decimal" value="30"></label>
+        </div>
+        <p class="hint">Outside of the frame. Height is floor to the top of the frame, casters included.</p>
+      </section>
+
+      <section>
+        <h2>Wheels</h2>
+        <label>Casters<select id="caster"></select></label>
+        <p class="hint" id="caster-note"></p>
+      </section>
+
+      <section>
+        <h2>Shelves</h2>
+        <label>Shelves between bottom and top
+          <span class="stepper"><button type="button" data-step="-1" aria-label="One fewer shelf">−</button><input id="shelves" type="number" min="0" max="8" value="0"><button type="button" data-step="1" aria-label="One more shelf">+</button></span>
+        </label>
+        <label class="check"><input id="custom-heights" type="checkbox"> Set shelf heights myself</label>
+        <div id="shelf-heights" class="shelf-heights" hidden></div>
+        <fieldset>
+          <legend>Decks</legend>
+          <label class="check"><input id="deck-top" type="checkbox" checked> Top</label>
+          <label class="check"><input id="deck-shelves" type="checkbox" checked> Shelves</label>
+          <label class="check"><input id="deck-bottom" type="checkbox" checked> Bottom</label>
+        </fieldset>
+        <label>Deck thickness<input id="deck-thickness" inputmode="decimal" value="3/4"></label>
+      </section>
+
+      <details>
+        <summary>More options</summary>
+        <label>Post below the bottom rails<input id="bottom-lift" inputmode="decimal" placeholder="1-1/2 (one bracket leg)"></label>
+        <p class="hint">At 0 the bottom rails sit flush with the post ends and their brackets go on top, so a bottom deck won't fit.</p>
+        <label>Buy rail as<select id="stock"><option value="120">10 ft sticks (cut them yourself)</option></select></label>
+        <label>Saw kerf<input id="kerf" inputmode="decimal" value="1/8"></label>
+      </details>
+
+      <section class="status" id="status" aria-live="polite"></section>
+    </aside>
+
+    <section class="stage">
+      <div class="viewer" id="viewer" aria-label="3D view">
+        <div class="viewer-tools">
+          <button type="button" data-view="iso">3D</button>
+          <button type="button" data-view="front">Front</button>
+          <button type="button" data-view="side">Side</button>
+          <button type="button" data-view="top">Top</button>
+          <label class="check small"><input id="show-decks" type="checkbox" checked> Decks</label>
+        </div>
+        <p class="viewer-hint">Drag to turn · scroll or pinch to zoom · right-drag to pan</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-tab="checks">Checks</button>
+        <button role="tab" data-tab="bom">Parts list</button>
+        <button role="tab" data-tab="cuts">Cut list</button>
+        <button role="tab" data-tab="drawing">Drawing</button>
+        <button role="tab" data-tab="order">Order from McMaster</button>
+      </div>
+      <div class="tab-body">
+        <div data-pane="checks" id="pane-checks"></div>
+        <div data-pane="bom" id="pane-bom" hidden></div>
+        <div data-pane="cuts" id="pane-cuts" hidden></div>
+        <div data-pane="drawing" id="pane-drawing" hidden>
+          <div class="row-actions">
+            <button type="button" id="dl-svg">Download drawing (SVG)</button>
+            <button type="button" id="print-drawing">Print / save as PDF</button>
+          </div>
+          <div class="paper" id="drawing"></div>
+        </div>
+        <div data-pane="order" id="pane-order" hidden></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Part numbers, prices and sizes from <a href="https://www.mcmaster.com/products/extrusions/" rel="noopener">mcmaster.com</a>; check them before ordering. Not affiliated with McMaster-Carr.</span>
+    <span id="catalog-date"></span>
+  </footer>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

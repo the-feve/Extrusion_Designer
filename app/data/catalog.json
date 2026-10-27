@@ -1,0 +1,84 @@
+{
+  "checkedOn": "2026-10-27",
+  "note": "Prices, part numbers and sizes from mcmaster.com. Anything with \"verified\": false is a placeholder until checked on McMaster. Research notes: docs/research/.",
+  "profiles": {
+    "1515": {
+      "name": "1-1/2\" x 1-1/2\" T-slotted rail, single four slot, smooth, silver",
+      "series": "1.5",
+      "section": [
+        1.5,
+        1.5
+      ],
+      "slotOffsets": [
+        [
+          0.75
+        ],
+        [
+          0.75
+        ]
+      ],
+      "slotOpening": 0.32,
+      "slotDepth": 0.484,
+      "centerHoleDia": 0.262,
+      "endTapThread": "5/16\"-18",
+      "material": "6063-T6 anodized aluminum",
+      "weightLbPerFt": 1.03,
+      "url": "https://www.mcmaster.com/4658N41/",
+      "stock": [
+        {
+          "lengthIn": 120,
+          "pn": "4658N49",
+          "priceUsd": null,
+          "verified": false,
+          "note": "10 ft stick: part number from the owner's STEP file name"
+        }
+      ],
+      "cutToLength": null,
+      "verified": true,
+      "weightNote": "Computed from the STEP section (0.880 in2) at 0.0975 lb/in3; McMaster does not list it.",
+      "geometry": "geometry/rail-1515.json"
+    }
+  },
+  "parts": {
+    "47065T845": {
+      "kind": "corner-bracket",
+      "name": "Silver corner bracket, 1-1/2\" long, for 1-1/2\" rail",
+      "priceUsd": 9.38,
+      "forProfiles": [
+        "1515"
+      ],
+      "legLength": 1.5,
+      "width": 1.31,
+      "thickness": 0.25,
+      "holeDia": 0.328,
+      "holeFromCorner": 0.75,
+      "includes": [
+        {
+          "qty": 2,
+          "name": "5/16\"-18 end-feed flanged screw and nut set, black"
+        }
+      ],
+      "fastenerInstall": "end-feed",
+      "url": "https://www.mcmaster.com/47065T845/",
+      "verified": true,
+      "geometry": "geometry/bracket-47065T845.json"
+    },
+    "caster-placeholder": {
+      "kind": "caster",
+      "pn": null,
+      "name": "Stem caster for 5/16\"-18 tapped rail end (pick a McMaster part)",
+      "priceUsd": null,
+      "mount": "stem",
+      "thread": "5/16\"-18",
+      "mountHeight": 5.0,
+      "wheelDia": 4.0,
+      "footprint": [
+        2.0,
+        2.0
+      ],
+      "swivelRadius": 3.0,
+      "verified": false,
+      "note": "Sizes are guesses until a real caster is chosen."
+    }
+  }
+}

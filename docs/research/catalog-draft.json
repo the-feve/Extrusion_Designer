@@ -1,0 +1,2115 @@
+{
+ "checkedOn": "2026-10-27",
+ "series": "inch 1-1/2 (0.32 slot, 5/16-18)",
+ "notes": [
+  "priceUsd is a current verified price only; price2019Usd is a stale 2019-02-04 archive price (S8), never show as current.",
+  "basis: owner = owner screenshot/STEP (verified); web-summary = McMaster category page text read via summarizer on 2026-10-27 (unverified, re-check PN); archive-2019 = 2019 catalog printout (unverified for today).",
+  "null means unknown. No values were guessed into this file.",
+  "McMaster terms prohibit redistributing CAD models and building a competitive database; see mcmaster-1.5-series.md section 6."
+ ],
+ "parts": [
+  {
+   "pn": "4658N41",
+   "kind": "rail",
+   "name": "Rail, single four slot, smooth, hollow, silver, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "centerHoleIn": 0.262,
+    "centerHoleTapFor": "5/16\"-18",
+    "alloy": "6063-T6",
+    "lengthsFt": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     8,
+     10
+    ],
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "owner screenshot + reference/mcmaster/*.STEP; https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": true,
+   "basis": "owner",
+   "notes": "Base PN shown by owner; per-length PNs unknown except 4658N49=10 ft. Hollow per S3 (web-summary)."
+  },
+  {
+   "pn": "4658N49",
+   "kind": "rail",
+   "name": "Rail, single four slot, smooth, silver, 1-1/2 x 1-1/2, 10 ft",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "lengthIn": 120,
+    "centerHoleIn": 0.262,
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "reference/mcmaster/4658N49_T-Slotted_Framing_Rail.STEP (measured 1.5 x 1.5 x 120.0 in)",
+   "verified": true,
+   "basis": "owner-STEP"
+  },
+  {
+   "pn": "47065T102",
+   "kind": "rail",
+   "name": "Rail, single four slot, grooved, hollow, silver, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "silver",
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": {
+    "1ft": 7.18,
+    "2ft": 13.98,
+    "3ft": 20.3,
+    "4ft": 25.25,
+    "5ft": 31.32,
+    "6ft": 36.99,
+    "8ft": 48.42,
+    "10ft": 57.82
+   },
+   "notes": "Fixed lengths 1/2-10 ft; per-length PN convention unverified; 2019 prices from https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf"
+  },
+  {
+   "pn": "47065T103",
+   "kind": "rail",
+   "name": "Rail, single four slot, grooved, solid, silver, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "silver",
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": {
+    "1ft": 10.3,
+    "2ft": 18.19,
+    "3ft": 23.71,
+    "4ft": 27.3,
+    "5ft": 34.88,
+    "6ft": 38.57,
+    "8ft": 55.18,
+    "10ft": 67.73
+   },
+   "notes": "Fixed lengths 1/2-10 ft; per-length PN convention unverified; 2019 prices from https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf"
+  },
+  {
+   "pn": "47065T507",
+   "kind": "rail",
+   "name": "Rail, single four slot, grooved, hollow, black, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "black",
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Fixed lengths 1/2-10 ft; per-length PN convention unverified"
+  },
+  {
+   "pn": "47065T399",
+   "kind": "rail",
+   "name": "Rail, single four slot, grooved, solid, black, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "black",
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Fixed lengths 1/2-10 ft; per-length PN convention unverified"
+  },
+  {
+   "pn": "4544N63",
+   "kind": "rail",
+   "name": "Rail, single four slot, grooved, solid, yellow, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "yellow",
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Fixed lengths 1/2-10 ft; per-length PN convention unverified"
+  },
+  {
+   "pn": "47065T508",
+   "kind": "rail",
+   "name": "Rail, single four slot, grooved, hollow, yellow, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "yellow",
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Fixed lengths 1/2-10 ft; per-length PN convention unverified"
+  },
+  {
+   "pn": "6651N11",
+   "kind": "rail",
+   "name": "High-strength rail, single four slot, smooth, solid, black fiberglass-reinforced polyurethane, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "slotWidthIn": 0.32,
+    "slotDepthIn": 0.484
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "3136N72",
+   "kind": "rail",
+   "name": "Rail, single four slot, smooth, hollow, silver, 1-1/2 x 1-1/2, short lengths 1-11 in",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "lengthsIn": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     7,
+     8,
+     9,
+     10,
+     11
+    ]
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T808",
+   "kind": "rail-cut-to-length",
+   "name": "Cut-to-length rail, single four slot, grooved, hollow, silver, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "inch",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "maxLengthIn": 240,
+    "incrementIn": 0.125,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "silver"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 0.69,
+   "notes": "Price tiers 1-23 / 24-up pieces; cut fee and tolerance unknown; 2019 $/in from archive"
+  },
+  {
+   "pn": "47065T802",
+   "kind": "rail-cut-to-length",
+   "name": "Cut-to-length rail, single four slot, smooth, solid, silver, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "inch",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "maxLengthIn": 240,
+    "incrementIn": 0.125,
+    "texture": "smooth",
+    "construction": "solid",
+    "color": "silver"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 1.0,
+   "notes": "Price tiers 1-23 / 24-up pieces; cut fee and tolerance unknown; 2019 $/in from archive"
+  },
+  {
+   "pn": "6575N365",
+   "kind": "rail-cut-to-length",
+   "name": "Cut-to-length rail, single four slot, grooved, solid, black, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "inch",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "maxLengthIn": 240,
+    "incrementIn": 0.125,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "black"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Price tiers 1-23 / 24-up pieces; cut fee and tolerance unknown"
+  },
+  {
+   "pn": "47065T812",
+   "kind": "rail-cut-to-length",
+   "name": "Cut-to-length rail, single four slot, grooved, hollow, black, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "inch",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "maxLengthIn": 240,
+    "incrementIn": 0.125,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "black"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 0.87,
+   "notes": "Price tiers 1-23 / 24-up pieces; cut fee and tolerance unknown; 2019 $/in from archive"
+  },
+  {
+   "pn": "6575N366",
+   "kind": "rail-cut-to-length",
+   "name": "Cut-to-length rail, single four slot, grooved, solid, yellow, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "inch",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "maxLengthIn": 240,
+    "incrementIn": 0.125,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "yellow"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Price tiers 1-23 / 24-up pieces; cut fee and tolerance unknown"
+  },
+  {
+   "pn": "47065T813",
+   "kind": "rail-cut-to-length",
+   "name": "Cut-to-length rail, single four slot, grooved, hollow, yellow, 1-1/2 x 1-1/2",
+   "priceUsd": null,
+   "unit": "inch",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "maxLengthIn": 144,
+    "incrementIn": 0.125,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "yellow"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 1.19,
+   "notes": "Price tiers 1-23 / 24-up pieces; cut fee and tolerance unknown; 2019 $/in from archive"
+  },
+  {
+   "pn": "4601N37",
+   "kind": "rail-machined",
+   "name": "Rail, single four slot, grooved, hollow, 1-1/2 x 1-1/2, tapped center hole one end",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "thread": "3/8\"-16",
+    "tapDepthIn": 1.25
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4601N31",
+   "kind": "rail-machined",
+   "name": "Rail, single four slot, grooved, hollow, 1-1/2 x 1-1/2, tapped center holes both ends",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "thread": "5/16\"-18",
+    "tapDepthIn": 1.0
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4601N51",
+   "kind": "rail-machined",
+   "name": "Rail, single four slot, grooved, hollow, 1-1/2 x 1-1/2, access hole one end",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "holeDiaIn": 0.295
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4601N64",
+   "kind": "rail-machined",
+   "name": "Rail, single four slot, grooved, hollow, 1-1/2 x 1-1/2, access holes both ends",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "holeDiaIn": 0.295
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4601N17",
+   "kind": "rail-machined",
+   "name": "Rail, single four slot, grooved, hollow, 1-1/2 x 1-1/2, bore hole one end",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "holeDiaIn": 0.813
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4601N11",
+   "kind": "rail-machined",
+   "name": "Rail, single four slot, grooved, hollow, 1-1/2 x 1-1/2, bore holes both ends",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 1.5,
+    "widthIn": 1.5,
+    "holeDiaIn": 0.813
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4658N31",
+   "kind": "rail-double",
+   "name": "Rail, double six slot, smooth, hollow, silver, 1-1/2 x 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 3,
+    "widthIn": 1.5,
+    "slots": 6,
+    "texture": "smooth",
+    "construction": "hollow",
+    "color": "silver"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T108",
+   "kind": "rail-double",
+   "name": "Rail, double six slot, grooved, hollow, silver, 1-1/2 x 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 3,
+    "widthIn": 1.5,
+    "slots": 6,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "silver"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T109",
+   "kind": "rail-double",
+   "name": "Rail, double six slot, grooved, solid, silver, 1-1/2 x 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 3,
+    "widthIn": 1.5,
+    "slots": 6,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "silver"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T882",
+   "kind": "rail-double",
+   "name": "Rail, double six slot, grooved, hollow, black, 1-1/2 x 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 3,
+    "widthIn": 1.5,
+    "slots": 6,
+    "texture": "grooved",
+    "construction": "hollow",
+    "color": "black"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T599",
+   "kind": "rail-double",
+   "name": "Rail, double six slot, grooved, solid, black, 1-1/2 x 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "heightIn": 3,
+    "widthIn": 1.5,
+    "slots": 6,
+    "texture": "grooved",
+    "construction": "solid",
+    "color": "black"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/slotted-framing/t-slotted-framing-component~rail/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T845",
+   "kind": "corner-bracket",
+   "name": "Corner bracket, silver, 1-1/2 legs, for 1-1/2 rail",
+   "priceUsd": 9.38,
+   "unit": "each",
+   "dims": {
+    "legIn": 1.5,
+    "widthIn": 1.31,
+    "thicknessIn": 0.25,
+    "holeDiaIn": 0.328,
+    "holeFromEndIn": 0.75,
+    "holesPerLeg": 1
+   },
+   "includes": [
+    "2 end-feed 5/16\"-18 flanged screw-and-nut sets (black)"
+   ],
+   "source": "owner screenshot + reference/mcmaster/*.STEP",
+   "verified": true,
+   "basis": "owner",
+   "price2019Usd": 5.77
+  },
+  {
+   "pn": "47065T833",
+   "kind": "corner-bracket",
+   "name": "Corner bracket, black, 1-1/2 legs",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 1.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.27
+  },
+  {
+   "pn": "47065T241",
+   "kind": "corner-bracket",
+   "name": "Extended corner bracket, silver, 3 legs",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 3
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.26
+  },
+  {
+   "pn": "47065T312",
+   "kind": "corner-bracket",
+   "name": "Extended corner bracket, black, 3 legs",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 3
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 10.7
+  },
+  {
+   "pn": "47065T679",
+   "kind": "gusset",
+   "name": "Gusset corner bracket, silver, 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 1.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 7.58
+  },
+  {
+   "pn": "47065T695",
+   "kind": "gusset",
+   "name": "Gusset corner bracket, black, 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 1.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 8.83
+  },
+  {
+   "pn": "47065T762",
+   "kind": "gusset",
+   "name": "Extended gusset, silver, 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 3
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 11.92
+  },
+  {
+   "pn": "47065T798",
+   "kind": "gusset",
+   "name": "Extended gusset, black, 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 3
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 13.89
+  },
+  {
+   "pn": "47065T243",
+   "kind": "end-bracket",
+   "name": "Outside corner end bracket, 1-1/2 (needs tapped holes)",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 1.5,
+    "requiresTap": true
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 7.84
+  },
+  {
+   "pn": "47065T245",
+   "kind": "end-bracket",
+   "name": "Three-way outside corner, 1-1/2 (needs tapped holes)",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "legIn": 1.5,
+    "requiresTap": true
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 10.78
+  },
+  {
+   "pn": "47065T256",
+   "kind": "joining-plate",
+   "name": "Surface bracket straight, silver, 3",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 3,
+    "shape": "straight"
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.39
+  },
+  {
+   "pn": "47065T261",
+   "kind": "joining-plate",
+   "name": "Surface bracket extended straight, silver, 6",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 6,
+    "shape": "straight"
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.66
+  },
+  {
+   "pn": "47065T271",
+   "kind": "joining-plate",
+   "name": "Surface bracket corner (L), silver, 4-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 4.5,
+    "shape": "L"
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 8.77
+  },
+  {
+   "pn": "47065T279",
+   "kind": "joining-plate",
+   "name": "Surface bracket tee, silver, 4-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 4.5,
+    "shape": "tee"
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 9.16
+  },
+  {
+   "pn": "47065T298",
+   "kind": "joining-plate",
+   "name": "Reducer surface bracket straight 1 to 1-1/2",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 2.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.39
+  },
+  {
+   "pn": "5537T51",
+   "kind": "brace",
+   "name": "Corner brace 2, for 1-1/2 / 40mm",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 2
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 7.98
+  },
+  {
+   "pn": "47065T12",
+   "kind": "brace",
+   "name": "Diagonal brace 6, silver",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 6
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 16.0
+  },
+  {
+   "pn": "47065T27",
+   "kind": "brace",
+   "name": "Diagonal brace 12, silver",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 12
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 19.91
+  },
+  {
+   "pn": "47065T702",
+   "kind": "brace",
+   "name": "Diagonal brace 18, silver",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 18
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 20.84
+  },
+  {
+   "pn": "47065T704",
+   "kind": "brace",
+   "name": "Diagonal brace 24, silver",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 24
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 22.77
+  },
+  {
+   "pn": "5537T294",
+   "kind": "hidden-connector",
+   "name": "Straight connector, slides in slot",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.3
+  },
+  {
+   "pn": "5537T316",
+   "kind": "hidden-connector",
+   "name": "L-shaped connector, slides in slot",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 3.56
+  },
+  {
+   "pn": "47065T339",
+   "kind": "hidden-connector",
+   "name": "Tee connector, threads into slot",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 10.55
+  },
+  {
+   "pn": "47065T156",
+   "kind": "hidden-connector",
+   "name": "Concealed connector (tap 1 hole + drill access hole)",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "requiresTap": true,
+    "requiresDrill": true
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 1.91
+  },
+  {
+   "pn": "47065T154",
+   "kind": "anchor-fastener",
+   "name": "Anchor connector (drill install hole in rail face)",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "requiresDrill": true
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 3.89
+  },
+  {
+   "pn": "5537T272",
+   "kind": "anchor-fastener",
+   "name": "Double anchor connector, end-to-end",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "requiresDrill": true
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 8.62
+  },
+  {
+   "pn": "47065T853",
+   "kind": "mounting-plate",
+   "name": "Mounting plate 3 x 1-1/2 x 1/4",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "widthIn": 3,
+    "lengthIn": 1.5,
+    "thicknessIn": 0.25
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 12.14
+  },
+  {
+   "pn": "47065T854",
+   "kind": "mounting-plate",
+   "name": "Mounting plate 3 x 3 x 1/4",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "widthIn": 3,
+    "lengthIn": 3,
+    "thicknessIn": 0.25
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 12.56
+  },
+  {
+   "pn": "47065T652",
+   "kind": "mounting-plate",
+   "name": "Mounting plate 4 x 4 x 1/4",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "widthIn": 4,
+    "lengthIn": 4,
+    "thicknessIn": 0.25
+   },
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 13.71
+  },
+  {
+   "pn": "47065T97",
+   "kind": "fastener",
+   "name": "End-feed fastener, single, flanged, black zinc-plated steel, 5/16-18",
+   "priceUsd": null,
+   "unit": "pack",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.6875
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 2.71,
+   "packQty": 4
+  },
+  {
+   "pn": "47065T145",
+   "kind": "fastener",
+   "name": "End-feed fastener, single, 302 stainless, 5/16-18",
+   "priceUsd": null,
+   "unit": "pack",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.625
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 4.51,
+   "packQty": 4
+  },
+  {
+   "pn": "47065T215",
+   "kind": "fastener",
+   "name": "End-feed fastener, compact head, 5/16-18",
+   "priceUsd": null,
+   "unit": "pack",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.625
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 2.38,
+   "packQty": 4
+  },
+  {
+   "pn": "47065T149",
+   "kind": "fastener",
+   "name": "End-feed fastener, dual, 5/16-18",
+   "priceUsd": null,
+   "unit": "pack",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.6875
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 6.76,
+   "packQty": 4
+  },
+  {
+   "pn": "47065T99",
+   "kind": "fastener",
+   "name": "End-feed fastener, triple, 5/16-18",
+   "priceUsd": null,
+   "unit": "pack",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.6875
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 10.15,
+   "packQty": 4
+  },
+  {
+   "pn": "47065T152",
+   "kind": "fastener",
+   "name": "Drop-in fastener with handle, 5/16-18",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.6875
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 2.48,
+   "packQty": 1
+  },
+  {
+   "pn": "47065T327",
+   "kind": "fastener",
+   "name": "Drop-in fastener, spring-loaded ball, 5/16-18",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.6875
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 1.21,
+   "packQty": 1
+  },
+  {
+   "pn": "47065T229",
+   "kind": "fastener",
+   "name": "Drop-in fastener, spring tab, 5/16-18",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.6875
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 1.46,
+   "packQty": 1
+  },
+  {
+   "pn": "47065T234",
+   "kind": "fastener",
+   "name": "Drop-in fastener with stud, 5/16-18",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "thread": "5/16\"-18",
+    "threadLengthIn": 0.9688
+   },
+   "includes": [
+    "screw",
+    "nut"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 1.58,
+   "packQty": 1
+  },
+  {
+   "pn": "47065T336",
+   "kind": "caster-stem",
+   "name": "Threaded-stem swivel caster, 3 rubber, wheel brake, 125 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 125,
+    "thread": "3/8\"-16",
+    "stemLengthIn": 1.5,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "requiresTap": "3/8\"-16 in rail end (tap 2521A623 per S4)"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 10.65,
+   "notes": "Screws into tapped hole in end of vertical rail. Standard 0.262 center hole must be drilled/tapped 3/8-16, or use rail 4601N37."
+  },
+  {
+   "pn": "47065T919",
+   "kind": "caster-stem",
+   "name": "Threaded-stem swivel caster, 3 rubber, wheel brake, 200 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 200,
+    "thread": "3/8\"-16",
+    "stemLengthIn": 1.5,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "requiresTap": "3/8\"-16"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "4304N17",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), rigid, 3 rubber, 140 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N14",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), rigid, 3 polyurethane, 140 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N28",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), rigid, 4 rubber, 270 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 270,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N25",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), rigid, 4 polyurethane, 240 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 240,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "5537T437",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), rigid, 4 polyurethane, 265 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 265,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 38.4,
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N42",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), swivel, 3 rubber, 140 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N38",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), swivel, 3 polyurethane, 140 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N53",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), swivel, 4 rubber, 150 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 150,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N49",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), swivel, 4 polyurethane, 155 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 155,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "5537T435",
+   "kind": "caster-plate",
+   "name": "Plate caster (standard), swivel, 4 polyurethane, 265 lb, total-lock",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 265,
+    "swivel": true,
+    "brake": "total-lock",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 53.78,
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N22",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), rigid, 3 rubber, 270 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 270,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N19",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), rigid, 3 polyurethane, 240 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 240,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N33",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), rigid, 4 rubber, 270 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 270,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N31",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), rigid, 4 polyurethane, 250 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 250,
+    "swivel": false,
+    "brake": null,
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N46",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), swivel, 3 rubber, 270 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 270,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N44",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), swivel, 3 polyurethane, 240 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 240,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N57",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), swivel, 4 rubber, 270 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 270,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N55",
+   "kind": "caster-plate",
+   "name": "Plate caster (easy-roll), swivel, 4 polyurethane, 250 lb, wheel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 4,
+    "capacityLb": 250,
+    "swivel": true,
+    "brake": "wheel",
+    "mountHeightIn": null,
+    "plateSize": null,
+    "boltPattern": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Sized to mount directly to T-slotted single rails with included fasteners; mounting height and plate pattern unknown"
+  },
+  {
+   "pn": "4304N66",
+   "kind": "caster-side-mount",
+   "name": "Side-mount swivel caster, 3 rubber, 140 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "stemLengthIn": 1,
+    "brake": "wheel",
+    "mountHeightIn": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Installs on side of vertical rail, no tapping"
+  },
+  {
+   "pn": "4304N73",
+   "kind": "caster-side-mount",
+   "name": "Side-mount swivel caster, 3 rubber, 140 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "stemLengthIn": 6.125,
+    "brake": null,
+    "mountHeightIn": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Installs on side of vertical rail, no tapping"
+  },
+  {
+   "pn": "4304N63",
+   "kind": "caster-side-mount",
+   "name": "Side-mount swivel caster, 3 polyurethane, 140 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "stemLengthIn": 1,
+    "brake": "wheel",
+    "mountHeightIn": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Installs on side of vertical rail, no tapping"
+  },
+  {
+   "pn": "4304N69",
+   "kind": "caster-side-mount",
+   "name": "Side-mount swivel caster, 3 polyurethane, 140 lb",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "wheelDiaIn": 3,
+    "capacityLb": 140,
+    "stemLengthIn": 6.125,
+    "brake": null,
+    "mountHeightIn": null
+   },
+   "includes": [
+    "mounting fasteners"
+   ],
+   "source": "https://www.mcmaster.com/products/aluminum-extrusion-casters/",
+   "verified": false,
+   "basis": "web-summary",
+   "notes": "Installs on side of vertical rail, no tapping"
+  },
+  {
+   "pn": "47065T843",
+   "kind": "foot",
+   "name": "Fixed mounting foot, silver, 5 long",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 5
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 14.6
+  },
+  {
+   "pn": "47065T713",
+   "kind": "foot",
+   "name": "Fixed mounting foot, black, 5 long",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 5
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 14.62
+  },
+  {
+   "pn": "47065T869",
+   "kind": "foot",
+   "name": "Adjustable-height foot, silver",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 4.75,
+    "addedHeightIn": "0-1.75"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T387",
+   "kind": "foot",
+   "name": "Adjustable-height foot, black",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 4.75,
+    "addedHeightIn": "0-1.75"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 24.94
+  },
+  {
+   "pn": "47065T342",
+   "kind": "foot",
+   "name": "Leveling mount, antislip, 3/8-16 stem",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 3,
+    "stemLengthIn": 2,
+    "capacityLb": 2800,
+    "thread": "3/8\"-16",
+    "requiresTap": "3/8\"-16"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary",
+   "price2019Usd": 7.89
+  },
+  {
+   "pn": "47065T909",
+   "kind": "foot",
+   "name": "Leveling mount, stay-put, 3/8-16 stem",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 4.125,
+    "stemLengthIn": 3,
+    "capacityLb": 5000,
+    "thread": "3/8\"-16",
+    "requiresTap": "3/8\"-16"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T917",
+   "kind": "foot",
+   "name": "Leveling mount, vibration-damping, 3/8-16 stem",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5,
+    "lengthIn": 3.5,
+    "stemLengthIn": 2,
+    "capacityLb": 200,
+    "thread": "3/8\"-16",
+    "requiresTap": "3/8\"-16"
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-feet/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "3136N21",
+   "kind": "end-cap",
+   "name": "End cap for single 1-1/2 rails, push-in ABS (gray/black/yellow/blue)",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5
+   },
+   "includes": [],
+   "source": "https://www.mcmaster.com/products/t-slotted-framing-end-caps/",
+   "verified": false,
+   "basis": "web-summary"
+  },
+  {
+   "pn": "47065T87",
+   "kind": "end-cap",
+   "name": "Snap-on end cap, 1-1/2, black (2019; may be superseded)",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "railHeightIn": 1.5
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 1.5
+  },
+  {
+   "pn": "47065T4",
+   "kind": "slot-cover",
+   "name": "Dust cover 6 ft, press-in, cut to size; flipped side holds a panel",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "lengthFt": 6
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 4.27
+  },
+  {
+   "pn": "5537T871",
+   "kind": "panel-retainer",
+   "name": "Panel gasket, rubber, 78-3/4 long, press into T-slot",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "lengthIn": 78.75
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 8.68
+  },
+  {
+   "pn": "47065T196",
+   "kind": "panel-retainer",
+   "name": "Panel hanger for solid panels, aluminum",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {},
+   "includes": [
+    "mounting fasteners (type/count unverified)"
+   ],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 5.66
+  },
+  {
+   "pn": "47065T252",
+   "kind": "panel-retainer",
+   "name": "Panel hanger, plastic, panels up to 3/8 thick",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "maxPanelThicknessIn": 0.375
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 2.39
+  },
+  {
+   "pn": "47065T321",
+   "kind": "panel",
+   "name": "Acrylic panel, clear, 1/4, 2 x 2 ft",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "lengthFt": 2,
+    "widthFt": 2,
+    "thicknessIn": 0.25
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 40.96
+  },
+  {
+   "pn": "47065T325",
+   "kind": "panel",
+   "name": "Polycarbonate panel, clear, 1/4, 2 x 2 ft",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "lengthFt": 2,
+    "widthFt": 2,
+    "thicknessIn": 0.25
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 52.15
+  },
+  {
+   "pn": "47065T322",
+   "kind": "panel",
+   "name": "Acrylic panel, clear, 1/4, 4 x 2 ft",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "lengthFt": 4,
+    "widthFt": 2,
+    "thicknessIn": 0.25
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 69.72
+  },
+  {
+   "pn": "47065T326",
+   "kind": "panel",
+   "name": "Polycarbonate panel, clear, 1/4, 4 x 2 ft",
+   "priceUsd": null,
+   "unit": "each",
+   "dims": {
+    "lengthFt": 4,
+    "widthFt": 2,
+    "thicknessIn": 0.25
+   },
+   "includes": [],
+   "source": "https://downloads.psl.noaa.gov/Projects/MOSAiC/documents/purchases/T-slots/T-Slotted%20Framing%20_%20McMaster-Carr.pdf",
+   "verified": false,
+   "basis": "archive-2019",
+   "price2019Usd": 88.08
+  }
+ ]
+}
