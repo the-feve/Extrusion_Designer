@@ -1,0 +1,5 @@
+# Cloudflare Pages (static site, no Functions, no secrets).
+# Dashboard build settings: build command `npm run build`, Node 22.
+name = "extrusion-designer"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "dist"
