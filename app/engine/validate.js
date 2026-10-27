@@ -74,6 +74,12 @@ export function validate(design, { maxStockIn = 120 } = {}) {
     }
   }
 
+  // 5b. Braces: both ends must sit on their members' faces.
+  for (const h of design.hardware) {
+    if (h.kind !== 'brace') continue;
+    if (!h.fit.ok) add('error', 'brace-fit', `${h.name}: ${h.fit.why}.`, [h.id, ...h.members]);
+  }
+
   // 6. One piece: every member connects to every other through joints.
   const groups = connectedGroups(design);
   if (groups.length > 1) {

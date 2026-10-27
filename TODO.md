@@ -8,6 +8,9 @@
 - [ ] Decide: email McMaster (eprocurement@mcmaster.com) for written OK to use part numbers in a public tool?
 
 ## Next in the build logic
+- [ ] Check the 45° brace geometry (47065T12/27/702/704) against McMaster's drawing via the Parts library; set `verified` and real `width`/reach in `catalog.json`.
+- [ ] Risers: a crossbar between two risers (top rail), risers braced across the cart (perpendicular to the rail), risers over a post, a mounting plate on top.
+- [ ] Parts library: export/import the whole library as a file to move it between computers (numbers only, or with files for personal use).
 - [ ] Plate casters (4304N series: bolt to the rails, no machining). Needs plate size and bolt pattern; bottom rails flush with the post ends, brackets then go on top, so the bottom deck needs notches around them or sits in the slots.
 - [ ] Caster pattern: 2 swivel with brake + 2 rigid.
 - [ ] Pre-tapped rail option (4601N37 is grooved, 3/8"-16 one end) and McMaster cut-to-length (47065T808 grooved hollow) as a buying option.

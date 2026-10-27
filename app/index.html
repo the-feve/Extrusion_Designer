@@ -62,6 +62,13 @@
         <label>Deck thickness<input id="deck-thickness" inputmode="decimal" value="3/4"></label>
       </section>
 
+      <section>
+        <h2>Risers</h2>
+        <p class="hint">Vertical rails standing on the top frame, for a monitor, lights, a tool board or a fixture, held by 45° braces. Add as many as you need.</p>
+        <div id="risers" class="risers"></div>
+        <button type="button" id="add-riser">+ Add a riser</button>
+      </section>
+
       <details>
         <summary>More options</summary>
         <label>Post below the bottom rails<input id="bottom-lift" inputmode="decimal" placeholder="1-1/2 (one bracket leg)"></label>
@@ -98,6 +105,7 @@
         <button role="tab" data-tab="cuts">Cut list</button>
         <button role="tab" data-tab="drawing">Drawing</button>
         <button role="tab" data-tab="order">Order from McMaster</button>
+        <button role="tab" data-tab="library">Parts library</button>
         <button type="button" class="float-toggle" data-float="dock" title="Pop these tabs out into a window you can move and resize">⧉ Float</button>
       </div>
       <div class="tab-body">
@@ -112,6 +120,7 @@
           <div class="paper" id="drawing"></div>
         </div>
         <div data-pane="order" id="pane-order" hidden></div>
+        <div data-pane="library" id="pane-library" hidden></div>
       </div>
       </div>
     </section>

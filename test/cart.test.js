@@ -190,3 +190,46 @@ test('exploded view: every joint opens, brackets sit in the gap, nothing moves a
   for (const h of d.hardware) assert.ok(off.has(h.id));
   for (const p of d.panels) assert.ok(off.get(p.id)[2] > 0);
 });
+
+test('risers: stand on the top rail, braced at 45°, no clashes, deck notched, parts listed', async () => {
+  const { braceReach } = await import('../app/engine/riser.js');
+  const d = buildCart(catalog, { risers: [{ rail: 'back', at: 4, height: 24, braces: 'end', brace: '47065T12' }, { rail: 'back', at: 20, height: 24, braces: 'start', brace: '47065T12' }, { rail: 'left', height: 20 }] });
+  const v = validate(d);
+  assert.ok(v.ok, v.issues.filter((i) => i.level === 'error').map((i) => i.msg).join('\n'));
+  const risers = d.members.filter((m) => m.role === 'riser');
+  assert.equal(risers.length, 3);
+  for (const r of risers) {
+    assert.equal(r.box.min[2], 30); // on top of the frame
+    const j = d.joints.find((x) => x.rail === r.id);
+    assert.ok(j.contact && j.fasteners.length === 1, r.name);
+  }
+  const braces = d.hardware.filter((h) => h.kind === 'brace');
+  assert.equal(braces.length, 4); // 1 + 1 + 2
+  for (const b of braces) assert.ok(b.fit.ok, b.name);
+  // 45°: the foot is as far along the rail as the top is up the riser.
+  const b0 = braces[0];
+  assert.ok(Math.abs(b0.band.c1 - braceReach(catalog.part('47065T12'))) < 1e-9);
+  // Independent clash check, every pair.
+  const all = solids(d);
+  for (let i = 0; i < all.length; i++) for (let k = i + 1; k < all.length; k++) {
+    if (all[i].owner !== all[k].owner) assert.ok(!clashes(all[i].box, all[k].box), `${all[i].name} vs ${all[k].name}`);
+  }
+  const top = d.panels.find((p) => p.level === 'top');
+  assert.equal(top.cutouts.length, 3);
+  const b = bom(d);
+  assert.equal(b.lines.find((l) => l.pn === '47065T12').qty, 2);
+  assert.equal(b.lines.find((l) => l.pn === '47065T27').qty, 2);
+  assert.ok(b.cuts.some((c) => c.roles.includes('riser') && c.length === 24));
+});
+
+test('risers: refused when off the rail, too short for the brace, or the brace runs into a post', () => {
+  const codes = (r) => validate(buildCart(catalog, { risers: [r] })).issues.filter((i) => i.level === 'error').map((i) => i.code);
+  assert.ok(codes({ rail: 'front', at: 0.5 }).includes('riser-off-rail'));
+  assert.ok(codes({ height: 5 }).includes('riser-short'));
+  assert.ok(codes({ height: 30, brace: '47065T704' }).includes('brace-fit'));
+  assert.ok(codes({ rail: 'back', at: 12, braces: 'both' }).length === 0);
+  assert.ok(codes({ rail: 'back', at: 10, braces: 'both' }).includes('brace-fit')); // left foot lands on the post
+  // Two risers whose braces meet in the middle clash.
+  const v = validate(buildCart(catalog, { risers: [{ at: 6, braces: 'end', height: 24 }, { at: 18, braces: 'start', height: 24 }] }));
+  assert.ok(v.issues.some((i) => i.code === 'clash'));
+});

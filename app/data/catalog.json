@@ -105,6 +105,86 @@
       "name": "Threaded-stem swivel caster, 3\" rubber wheel, wheel brake, 200 lb",
       "capacityLb": 200,
       "url": "https://www.mcmaster.com/47065T919/"
+    },
+    "47065T12": {
+      "kind": "brace",
+      "name": "Diagonal brace, 6\" long, 45\u00b0, for 1-1/2\" rail, silver",
+      "lengthIn": 6,
+      "angleDeg": 45,
+      "width": 1.5,
+      "priceUsd": null,
+      "forProfiles": [
+        "1515"
+      ],
+      "includes": [
+        {
+          "qty": 1,
+          "name": "set of mounting fasteners"
+        }
+      ],
+      "url": "https://www.mcmaster.com/47065T12/",
+      "verified": false,
+      "note": "Part number from a 2019 McMaster catalog printout (docs/research). Geometry assumed: 1-1/2\" square section at 45\u00b0, outer edge = listed length. Check against the 2D drawing (add it in the Parts library)."
+    },
+    "47065T27": {
+      "kind": "brace",
+      "name": "Diagonal brace, 12\" long, 45\u00b0, for 1-1/2\" rail, silver",
+      "lengthIn": 12,
+      "angleDeg": 45,
+      "width": 1.5,
+      "priceUsd": null,
+      "forProfiles": [
+        "1515"
+      ],
+      "includes": [
+        {
+          "qty": 1,
+          "name": "set of mounting fasteners"
+        }
+      ],
+      "url": "https://www.mcmaster.com/47065T27/",
+      "verified": false,
+      "note": "Part number from a 2019 McMaster catalog printout (docs/research). Geometry assumed: 1-1/2\" square section at 45\u00b0, outer edge = listed length. Check against the 2D drawing (add it in the Parts library)."
+    },
+    "47065T702": {
+      "kind": "brace",
+      "name": "Diagonal brace, 18\" long, 45\u00b0, for 1-1/2\" rail, silver",
+      "lengthIn": 18,
+      "angleDeg": 45,
+      "width": 1.5,
+      "priceUsd": null,
+      "forProfiles": [
+        "1515"
+      ],
+      "includes": [
+        {
+          "qty": 1,
+          "name": "set of mounting fasteners"
+        }
+      ],
+      "url": "https://www.mcmaster.com/47065T702/",
+      "verified": false,
+      "note": "Part number from a 2019 McMaster catalog printout (docs/research). Geometry assumed: 1-1/2\" square section at 45\u00b0, outer edge = listed length. Check against the 2D drawing (add it in the Parts library)."
+    },
+    "47065T704": {
+      "kind": "brace",
+      "name": "Diagonal brace, 24\" long, 45\u00b0, for 1-1/2\" rail, silver",
+      "lengthIn": 24,
+      "angleDeg": 45,
+      "width": 1.5,
+      "priceUsd": null,
+      "forProfiles": [
+        "1515"
+      ],
+      "includes": [
+        {
+          "qty": 1,
+          "name": "set of mounting fasteners"
+        }
+      ],
+      "url": "https://www.mcmaster.com/47065T704/",
+      "verified": false,
+      "note": "Part number from a 2019 McMaster catalog printout (docs/research). Geometry assumed: 1-1/2\" square section at 45\u00b0, outer edge = listed length. Check against the 2D drawing (add it in the Parts library)."
     }
   }
 }

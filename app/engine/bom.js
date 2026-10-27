@@ -90,8 +90,8 @@ export function hardwareList(design) {
 export function panelList(design) {
   const groups = new Map();
   for (const p of design.panels) {
-    const key = `${p.size.join('x')}|${p.thickness}|${p.material}|${p.notches ? 'n' : ''}`;
-    if (!groups.has(key)) groups.set(key, { size: p.size, thickness: p.thickness, material: p.material, notches: p.notches, qty: 0, names: [] });
+    const key = `${p.size.join('x')}|${p.thickness}|${p.material}|${p.notches ? 'n' : ''}|${JSON.stringify(p.cutouts || '')}`;
+    if (!groups.has(key)) groups.set(key, { size: p.size, thickness: p.thickness, material: p.material, notches: p.notches, cutouts: p.cutouts, qty: 0, names: [] });
     const g = groups.get(key);
     g.qty += 1;
     g.names.push(p.name);
@@ -119,7 +119,7 @@ export function bom(design, { purchase = 'stock', stockLength = 120, kerf = DEFA
       const stock = prof.stock.find((s) => s.lengthIn === stockLength) || prof.stock[prof.stock.length - 1];
       const plan = planStock(mine, stock.lengthIn, kerf);
       plans[profileId] = plan;
-      lines.push({ kind: 'rail', pn: stock.pn, name: `${prof.name}, ${stock.lengthIn / 12} ft`, qty: plan.sticks.length, unitPrice: stock.priceUsd ?? null, note: `Cut into ${mine.map((c) => `${c.qty} x ${c.mark}`).join(', ')}`, verified: stock.verified !== false, url: prof.url });
+      lines.push({ kind: 'rail', pn: stock.pn, name: `${prof.name}, ${stock.lengthIn / 12} ft`, qty: plan.sticks.length, unitPrice: stock.priceUsd ?? null, note: `Cut into ${mine.map((c) => `${c.qty} x ${c.mark}`).join(', ')}${plan.tooLong.length ? `; ${plan.tooLong.length} piece(s) are longer than a ${stock.lengthIn}" stick: pick longer stock` : ''}`, tooLong: plan.tooLong.length, verified: stock.verified !== false, url: prof.url });
     }
   }
   for (const h of hardwareList(design)) {

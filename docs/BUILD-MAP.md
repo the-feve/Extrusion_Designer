@@ -27,6 +27,9 @@ there is no server, so hosting is free (Cloudflare Pages, static files).
 | `app/engine/drawing.js` | The 2D drawing (SVG) |
 | `app/engine/export.js` | CSVs, the McMaster paste list, design JSON |
 | `app/engine/explode.js` | Exploded-view directions per part |
+| `app/engine/riser.js` | Risers on the top frame: planning, 45° braces, deck cutouts (`subtractRects`) |
+| `app/engine/stepinfo.js` | Reads a STEP file's unit and overall size; part number from McMaster file names; library entries → catalog parts |
+| `app/library.js` | *Parts library* tab: STEP/PDF drop, confirm sizes, saved in IndexedDB, merged into the catalog |
 | `test/cart.test.js` | Build-logic tests (`npm test`) |
 | `scripts/build.mjs`, `scripts/serve.mjs` | Static build to `dist/`; local preview at :4400 |
 | `tools/step_extract.py` | Reads a **local** McMaster STEP to measure it (output is git-ignored) |
@@ -141,6 +144,20 @@ and re-check every pair of solids independently.
 - **McMaster list**: `PARTNUMBER<TAB>QTY` per line for McMaster's
   *Order → Paste products and quantities* box. Lines without a part number
   are left out and listed under the box, never silently dropped.
+
+## Risers (riser.js)
+
+A riser is a vertical rail standing on one of the top rails (`params.risers[]`: `rail` front/back/left/right, `at` = centre measured from the frame's outside edge at the rail's start, `height` above the frame, `braces` both/start/end/none, `brace` part id).
+
+1. **Plan first** (`planRisers`): it must sit fully on the rail between the posts, be at least as tall as its brace reaches, and it reserves rail-top space on each side: the brace's reach on braced sides, a bracket leg (1.75") otherwise. Risers whose spaces overlap get a warning; real overlaps then show as clashes.
+2. **Top deck** is cut around those spaces (rectangle minus rectangles → boxes, `subtractRects`), so nothing lands in the deck; the deck table says how many edge cutouts.
+3. **Riser** = member `role: 'riser'`, its foot a butt joint on the rail's top face, with one corner bracket placed by `autoBracket` (leg B along the rail).
+4. **Braces**: McMaster's 45° diagonal braces (47065T12/27/702/704: 6/12/18/24", fasteners included). Assumed geometry, unverified until checked against their drawing: 1.5" square section, outer edge = listed length, so it reaches c1 = L / √2 up the riser and along the rail, and covers the band c0 ≤ u + v ≤ c1 (c0 = c1 − 1.5√2). For clash checks the band is covered by 10 stair-step boxes (slightly generous). A brace **fits** only if its top end lies on the riser's face and its foot on the rail's top face (not past the rail end into a post).
+5. Drawing: braces are drawn as the projected outline of the band; riser tops get a height column. 3D: the band extruded across the brace width. Exploded: risers follow their rail and lift; braces sit halfway.
+
+## Parts library (stepinfo.js, library.js)
+
+A tab where someone drops a McMaster STEP and/or 2D PDF. The part number and name come from the file name (`4658N49_T-Slotted Framing Rail.STEP`); the STEP's unit (inch/mm/…) and the bounding box of all its points give the overall size, which pre-fills the kind's fields (caster: mount height = largest size; bracket: leg length and width; rail: length and section). The person checks them against the drawing (shown beside the form) and saves. Entries live in **IndexedDB in that browser only** (files are never uploaded: McMaster's terms) and are merged into the catalog at load (`mergeLibrary`): casters and brackets as `lib:<id>` parts, rail sticks as extra stock lengths on the matching profile. Everything from the library is `verified: false`. *Copy catalog entry* gives the numbers-only JSON to add to `catalog.json` for everyone.
 
 ## Exploded view (explode.js, view3d.js)
 

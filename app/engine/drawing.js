@@ -15,6 +15,7 @@ const STYLE = {
   'corner-bracket': { fill: '#9aa4ae', stroke: '#22262b' },
   caster: { fill: '#5b6168', stroke: '#22262b' },
   panel: { fill: '#ecd9b0', stroke: '#6b5530' },
+  brace: { fill: '#c3cad1', stroke: '#22262b' },
 };
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -40,9 +41,9 @@ export function drawingSvg(design, opts = {}) {
   // Drawing area: left 64% of the sheet; tables on the right.
   const area = { x: SHEET.margin, y: SHEET.margin + 50, w: 1700 * 0.64 - 90, h: 1100 - 2 * SHEET.margin - 130 };
   const gap = 130; // paper hundredths between views (room for dimensions)
-  const nLevels = (design.levels || []).length;
+  const nLevels = (design.levels || []).length + new Set(design.members.filter((m) => m.role === 'riser').map((m) => m.box.max[2])).size;
   const sideRoom = 45 + nLevels * 40 + 60; // shelf dims + balloon column right of the side view
-  const fits = (k) => 110 + (EW + EL) / k * 100 + gap + sideRoom <= area.w && (EH + EL) / k * 100 + gap <= area.h;
+  const fits = (k) => 110 + (EW + EL) / k * 100 + gap + sideRoom <= area.w && (EH + EL) / k * 100 + gap + 75 <= area.h; // + room for the view labels
   const scale = SCALES.find(fits) || SCALES[SCALES.length - 1];
   const k = 100 / scale; // paper units per model inch
 
@@ -63,8 +64,17 @@ export function drawingSvg(design, opts = {}) {
       .map((s) => ({ ...s, depth: v.near > 0 ? s.box.max[v.d] : -s.box.min[v.d] }))
       .sort((a, c) => a.depth - c.depth);
     out.push(`<g class="view view-${name}">`);
+    const braceDone = new Set();
     for (const s of items) {
       const st = STYLE[s.kind] || STYLE.rail;
+      if (s.kind === 'brace') {
+        if (braceDone.has(s.owner)) continue;
+        braceDone.add(s.owner);
+        const h = design.hardware.find((x) => x.id === s.owner);
+        const pts = hull(braceCorners(h).map(P));
+        out.push(`<polygon points="${pts.map((q) => `${q.x.toFixed(2)},${q.y.toFixed(2)}`).join(' ')}" fill="${STYLE.brace.fill}" stroke="${STYLE.brace.stroke}" stroke-width="1.2"/>`);
+        continue;
+      }
       const a = P(s.box.min), c = P(s.box.max);
       const x = Math.min(a.x, c.x), y = Math.min(a.y, c.y), w = Math.abs(c.x - a.x), h = Math.abs(c.y - a.y);
       const outline = name === 'top' && s.kind === 'panel';
@@ -93,7 +103,9 @@ export function drawingSvg(design, opts = {}) {
 
   // Shelf heights: floor to the top of each level's rails, one column each
   // on the right of the side view.
-  const levels = design.levels || [];
+  // Riser tops get a height column too.
+  const riserTops = [...new Set(design.members.filter((m) => m.role === 'riser').map((m) => m.box.max[2]))].map((top) => ({ railTop: top }));
+  const levels = [...(design.levels || []), ...riserTops];
   const rightX = Pr(ext.max).x;
   levels.forEach((l, i) => {
     const y = Pr([0, 0, l.railTop]).y;
@@ -149,12 +161,12 @@ export function drawingSvg(design, opts = {}) {
   let ty = SHEET.margin + 10;
   const tx = 1700 * 0.64 + 10, tw = 1700 - SHEET.margin - tx;
   ty = table(out, tx, ty, tw, 'CUT LIST (1-1/2" rail)', ['MARK', 'QTY', 'LENGTH', 'NOTES'], [0.13, 0.1, 0.27, 0.5],
-    b.cuts.map((c) => [c.mark, c.qty, `${fracIn(c.length)} (${(c.length * 25.4).toFixed(0)} mm)`, c.ops.join('; ') || c.roles.join(', ').replace('rail-x', 'front/back').replace('rail-y', 'sides')]));
+    b.cuts.map((c) => [c.mark, c.qty, `${fracIn(c.length)} (${(c.length * 25.4).toFixed(0)} mm)`, c.ops.join('; ') || c.roles.join(', ').replace('rail-x', 'front/back').replace('rail-y', 'sides').replace('riser', 'risers')]));
   ty = table(out, tx, ty + 20, tw, 'PARTS (McMaster-Carr)', ['ITEM', 'QTY', 'PART NO.', 'DESCRIPTION'], [0.08, 0.08, 0.17, 0.67],
     [...b.lines.filter((l) => l.kind === 'rail').map((l) => ['-', l.qty, l.pn || 'TBD', l.name]), ...hwItems.map((l, i) => [i + 1, l.qty, l.pn || 'TBD', l.name])]);
   if (b.panels.length) {
     ty = table(out, tx, ty + 20, tw, 'DECKS (cut from sheet)', ['QTY', 'SIZE', 'NOTES'], [0.08, 0.3, 0.62],
-      b.panels.map((p) => [p.qty, `${fracIn(p.size[0])} x ${fracIn(p.size[1])} x ${fracIn(p.thickness)}`, `${p.material}${p.notches ? `; notch ${fracIn(p.notches.size[0])} sq. at 4 corners` : ''}`]));
+      b.panels.map((p) => [p.qty, `${fracIn(p.size[0])} x ${fracIn(p.size[1])} x ${fracIn(p.thickness)}`, `${p.material}${p.notches ? `; notch ${fracIn(p.notches.size[0])} sq. at 4 corners` : ''}${p.cutouts ? `; ${p.cutouts.length} edge cutout(s) for risers` : ''}`]));
   }
   const notes = assemblyNotes(design, b);
   out.push(text(tx, ty + 40, 'NOTES', 15, 'start', 'bold'));
@@ -266,6 +278,30 @@ function dimV(x, y1, y2, label, o = {}) {
   g.push(`<text x="${x - 8}" y="${my}" font-size="${o.small ? 13 : 15}" text-anchor="middle" fill="#111" transform="rotate(-90 ${x - 8} ${my})">${esc(label)}</text>`);
   g.push('</g>');
   return g.join('');
+}
+
+// The brace's 8 corners: its band (c0..c1) in the rail/riser plane, across its width.
+function braceCorners(h) {
+  const { corner, dirU, c0, c1, width } = h.band;
+  const a = dirU.findIndex((v) => v !== 0), j = a === 0 ? 1 : 0;
+  const pts = [];
+  for (const [u, v] of [[0, c0], [0, c1], [c1, 0], [c0, 0]]) {
+    for (const w of [-width / 2, width / 2]) {
+      const p = [...corner];
+      p[a] += dirU[a] * u; p[2] += v; p[j] += w;
+      pts.push(p);
+    }
+  }
+  return pts;
+}
+
+function hull(points) {
+  const p = [...points].sort((m, n) => m.x - n.x || m.y - n.y);
+  const cross = (o, a, b) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+  const lower = [], upper = [];
+  for (const q of p) { while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], q) <= 0) lower.pop(); lower.push(q); }
+  for (const q of p.reverse()) { while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], q) <= 0) upper.pop(); upper.push(q); }
+  return lower.slice(0, -1).concat(upper.slice(0, -1));
 }
 
 function extent(boxes) {

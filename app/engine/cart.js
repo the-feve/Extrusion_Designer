@@ -11,6 +11,7 @@
 
 import { createDesign, addMember, addButtJoint, autoBracket, addStemCaster, addPanel, resetIds } from './frame.js';
 import { parseLength } from './units.js';
+import { planRisers, addRisers, subtractRects, RISER_DEFAULT } from './riser.js';
 
 export const CART_DEFAULTS = {
   width: 24,          // outside of frame, x
@@ -25,6 +26,7 @@ export const CART_DEFAULTS = {
   deckThickness: 0.75,
   deckMaterial: '3/4" plywood',
   bracketsPerJoint: 1,
+  risers: [],         // [{ rail: 'back', at: centre from the rail's outside start edge, height above the frame, braces: 'both'|'start'|'end'|'none', brace: part id }]
 };
 
 export function normalizeCartParams(input = {}) {
@@ -35,6 +37,7 @@ export function normalizeCartParams(input = {}) {
   p.shelves = Math.max(0, Math.min(8, Math.round(Number(p.shelves) || 0)));
   if (Array.isArray(p.shelfHeights)) p.shelfHeights = p.shelfHeights.map(parseLength).filter(Number.isFinite);
   else p.shelfHeights = null;
+  p.risers = (Array.isArray(p.risers) ? p.risers : []).slice(0, 12).map((r0) => ({ ...RISER_DEFAULT, ...r0 })).map((r) => ({ ...r, at: r.at === '' || r.at == null ? null : parseLength(r.at), height: parseLength(r.height) }));
   if (p.shelfHeights && p.shelfHeights.length !== p.shelves) p.shelfHeights = null;
   return p;
 }
@@ -121,6 +124,12 @@ export function buildCart(catalog, input = {}) {
     rails.push({ level: l, ring });
   }
 
+  // Risers stand on the top rails; plan them now so the top deck can be
+  // notched where they land (riser.js).
+  const topRing = rails[rails.length - 1].ring;
+  const { plans: riserPlans, issues: riserIssues } = planRisers(catalog, p.risers, topRing, { s, frameTop: p.height, bracketLeg: bracket.legLength + bracket.thickness });
+  issues.push(...riserIssues);
+
   // Decks go in before brackets so a bracket never lands where a deck is.
   const t = p.deckThickness;
   for (const { level } of rails) {
@@ -135,13 +144,15 @@ export function buildCart(catalog, input = {}) {
           { min: [0, s, z], max: [s, L - s, z + t] },
           { min: [W - s, s, z], max: [W, L - s, z + t] },
         ]
-      : [{ min: [0, 0, z], max: [W, L, z + t] }];
+      : subtractRects({ min: [0, 0], max: [W, L] }, level.key === 'top' ? riserPlans.map((pl) => pl.notch2d) : [])
+          .map((r) => ({ min: [r.min[0], r.min[1], z], max: [r.max[0], r.max[1], z + t] }));
     const outline = notched
       ? [[s, 0], [W - s, 0], [W - s, s], [W, s], [W, L - s], [W - s, L - s], [W - s, L], [s, L], [s, L - s], [0, L - s], [0, s], [s, s]]
       : [[0, 0], [W, 0], [W, L], [0, L]];
     addPanel(design, {
       name: `${level.name} deck`, level: level.key, boxes, outline, size: [W, L], thickness: t, material: p.deckMaterial,
       notches: notched ? { count: 4, size: [s, s] } : null,
+      cutouts: level.key === 'top' && riserPlans.length ? riserPlans.map((pl) => ({ name: pl.name, size: [pl.notch2d.max[0] - pl.notch2d.min[0], pl.notch2d.max[1] - pl.notch2d.min[1]], at: pl.notch2d.min })) : null,
     });
     if (level.key === 'top' && z + t > p.height + 1e-9) {
       design.notes.push(`The top deck adds ${t}" above the frame: overall height to the deck is ${(p.height + t).toFixed(3)}".`);
@@ -163,6 +174,8 @@ export function buildCart(catalog, input = {}) {
   }
 
   if (caster) for (const key of ['FL', 'FR', 'BL', 'BR']) addStemCaster(design, posts[key], 'start', caster.id);
+
+  addRisers(design, riserPlans, { s, profile: p.profile, bracketPart: bracket.id });
 
   return design;
 }

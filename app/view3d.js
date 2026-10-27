@@ -86,6 +86,7 @@ export class View3D {
     for (const h of design.hardware) {
       if (h.kind === 'corner-bracket') this.own(h.id, this.bracket(h));
       else if (h.kind === 'caster') this.own(h.id, this.caster(h, design));
+      else if (h.kind === 'brace') this.own(h.id, this.brace(h));
     }
     for (const p of design.panels) {
       const g = new THREE.Group();
@@ -193,6 +194,24 @@ export class View3D {
     mesh.matrixAutoUpdate = false;
     mesh.matrix.copy(m);
     mesh.userData.mat = 'bracket';
+    return mesh;
+  }
+
+  // A 45° brace: its band (u, v) extruded across its width, in the plane of
+  // the rail (u) and the riser (v).
+  brace(h) {
+    const { corner, dirU, c0, c1, width } = h.band;
+    const shape = new THREE.Shape([[0, c0], [0, c1], [c1, 0], [c0, 0]].map(([u, v]) => new THREE.Vector2(u, v)));
+    const g = new THREE.ExtrudeGeometry(shape, { depth: width, bevelEnabled: false });
+    g.translate(0, 0, -width / 2);
+    g.computeVertexNormals();
+    const U = new THREE.Vector3(...dirU), V = new THREE.Vector3(0, 0, 1);
+    const W = new THREE.Vector3().crossVectors(U, V);
+    const m = new THREE.Matrix4().makeBasis(U, V, W).setPosition(new THREE.Vector3(...corner));
+    const mesh = new THREE.Mesh(g, this.mats.rail);
+    mesh.matrixAutoUpdate = false;
+    mesh.matrix.copy(m);
+    mesh.userData.mat = 'rail';
     return mesh;
   }
 

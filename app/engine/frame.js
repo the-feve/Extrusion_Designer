@@ -213,8 +213,8 @@ export function addStemCaster(design, post, end, partId) {
 
 // A flat panel lying on top of a level, notched around anything passing
 // through it. `boxes` are its solid pieces; `outline` is its 2D shape.
-export function addPanel(design, { name, level, boxes, outline, size, thickness, material, notches }) {
-  const p = { id: nextId('P'), kind: 'panel', name, level, boxes, outline, size, thickness, material, notches };
+export function addPanel(design, { name, level, boxes, outline, size, thickness, material, notches, cutouts }) {
+  const p = { id: nextId('P'), kind: 'panel', name, level, boxes, outline, size, thickness, material, notches, cutouts };
   design.panels.push(p);
   return p;
 }

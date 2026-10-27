@@ -2,6 +2,8 @@
 // view, checks, parts list, cut list, drawing and McMaster order tabs.
 
 import { makeCatalog } from './engine/catalog.js';
+import { mergeLibrary } from './engine/stepinfo.js';
+import { mountLibrary, listParts } from './library.js';
 import { buildCart, CART_DEFAULTS } from './engine/cart.js';
 import { validate } from './engine/validate.js';
 import { bom } from './engine/bom.js';
@@ -14,7 +16,8 @@ const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<
 const STORE_KEY = 'extrusion-designer.cart.v1';
 
 const catalogData = await (await fetch('./data/catalog.json')).json();
-const catalog = makeCatalog(catalogData);
+// The shipped catalog plus the parts in this browser's library (library.js).
+let catalog = makeCatalog(mergeLibrary(catalogData, await listParts()));
 $('catalog-date').textContent = `Catalog checked ${catalogData.checkedOn}`;
 
 let view = null;
@@ -26,8 +29,16 @@ try {
 }
 
 // ---- form <-> params ----------------------------------------------------
-const casters = catalog.partsOfKind('caster');
-$('caster').innerHTML = casters.map((c) => `<option value="${esc(c.id)}">${esc(c.pn)}: ${esc(c.name)}</option>`).join('') + '<option value="">None (posts stand on the floor)</option>';
+function fillPartSelects() {
+  const keepCaster = $('caster').value, keepStock = $('stock').value;
+  const casters = catalog.partsOfKind('caster');
+  $('caster').innerHTML = casters.map((c) => `<option value="${esc(c.id)}">${esc(c.pn)}: ${esc(c.name)}${c.source === 'my-library' ? ' (my parts)' : ''}</option>`).join('') + '<option value="">None (posts stand on the floor)</option>';
+  const stock = catalog.profile('1515').stock;
+  $('stock').innerHTML = stock.map((s) => `<option value="${s.lengthIn}">${s.lengthIn % 12 ? `${s.lengthIn}"` : `${s.lengthIn / 12} ft`} sticks${s.pn ? ` (${esc(s.pn)})` : ''}${s.source === 'my-library' ? ', my parts' : ''}: cut them yourself</option>`).join('');
+  if ([...$('caster').options].some((o) => o.value === keepCaster)) $('caster').value = keepCaster;
+  $('stock').value = [...$('stock').options].some((o) => o.value === keepStock) ? keepStock : String(stock[stock.length - 1].lengthIn);
+}
+fillPartSelects();
 
 function readForm() {
   const custom = $('custom-heights').checked;
@@ -42,6 +53,8 @@ function readForm() {
     deckThickness: $('deck-thickness').value,
     bottomLift: $('bottom-lift').value.trim() || null,
     kerf: $('kerf').value,
+    stock: $('stock').value,
+    risers: readRisers(),
   };
 }
 
@@ -55,8 +68,37 @@ function writeForm(p) {
   $('deck-thickness').value = q.deckThickness ?? '3/4';
   $('bottom-lift').value = q.bottomLift ?? '';
   $('kerf').value = q.kerf ?? '1/8';
+  if (q.stock && [...$('stock').options].some((o) => o.value === String(q.stock))) $('stock').value = String(q.stock);
+  // A caster from someone else's library (shared link) isn't here: use the default.
+  if (!$('caster').value && q.caster) $('caster').selectedIndex = 0;
   syncShelfInputs(q.shelfHeights);
+  renderRisers(q.risers || []);
 }
+
+// ---- risers -------------------------------------------------------------
+const RISER_SIDES = [['both', 'Both sides'], ['start', 'Left / front side only'], ['end', 'Right / back side only'], ['none', 'No braces']];
+function renderRisers(list) {
+  const braces = catalog.partsOfKind('brace').sort((a, b) => a.lengthIn - b.lengthIn);
+  $('risers').innerHTML = list.map((r, i) => `
+    <fieldset class="riser" data-i="${i}">
+      <legend>Riser ${i + 1}</legend>
+      <div class="grid2">
+        <label>On the<select data-k="rail">${['back', 'front', 'left', 'right'].map((v) => `<option value="${v}"${(r.rail || 'back') === v ? ' selected' : ''}>${v} rail</option>`).join('')}</select></label>
+        <label>Height above frame<input data-k="height" inputmode="decimal" value="${esc(r.height ?? 18)}"></label>
+        <label title="From the outside of the frame at the left (front and back rails) or the front (side rails) to the riser's centre">Centre at<input data-k="at" inputmode="decimal" placeholder="middle" value="${esc(r.at ?? '')}"></label>
+        <label>Braces<select data-k="braces">${RISER_SIDES.map(([v, l]) => `<option value="${v}"${(r.braces || 'both') === v ? ' selected' : ''}>${l}</option>`).join('')}</select></label>
+        <label>Brace<select data-k="brace">${braces.map((b) => `<option value="${esc(b.id)}"${(r.brace || '47065T27') === b.id ? ' selected' : ''}>${b.lengthIn}" (${esc(b.pn)})</option>`).join('')}</select></label>
+        <button type="button" class="remove" data-remove="${i}" aria-label="Remove riser ${i + 1}">Remove</button>
+      </div>
+    </fieldset>`).join('');
+  $('risers').querySelectorAll('[data-remove]').forEach((b) => b.addEventListener('click', () => {
+    const list2 = readRisers(); list2.splice(Number(b.dataset.remove), 1); renderRisers(list2); update();
+  }));
+}
+function readRisers() {
+  return [...$('risers').querySelectorAll('.riser')].map((f) => Object.fromEntries([...f.querySelectorAll('[data-k]')].map((el) => [el.dataset.k, el.value.trim()])));
+}
+$('add-riser').addEventListener('click', () => { renderRisers([...readRisers(), { rail: 'back', height: 18, braces: 'both', brace: '47065T27' }]); update(); });
 
 // Custom shelf heights: one box per shelf, prefilled with the even spacing.
 function syncShelfInputs(values) {
@@ -83,9 +125,9 @@ function update({ fit = false } = {}) {
   const raw = readForm();
   for (const id of ['width', 'length', 'height', 'deck-thickness', 'kerf']) $(id).classList.toggle('bad', !Number.isFinite(parseLength($(id).value)));
   const design = buildCart(catalog, raw);
-  const check = validate(design);
+  const check = validate(design, { maxStockIn: Math.max(...catalog.profile('1515').stock.map((x) => x.lengthIn)) });
   const kerf = parseLength(raw.kerf);
-  const b = design.members.length ? bom(design, { kerf: Number.isFinite(kerf) ? kerf : 0.125 }) : null;
+  const b = design.members.length ? bom(design, { kerf: Number.isFinite(kerf) ? kerf : 0.125, stockLength: Number(raw.stock) || 120 }) : null;
   current = { raw, design, check, bom: b };
   save(raw);
   renderStatus(check, b);
@@ -142,7 +184,7 @@ function renderBom(b) {
 
 function renderCuts(b) {
   if (!b) { $('pane-cuts').innerHTML = ''; return; }
-  const rows = b.cuts.map((c) => `<tr><td><span class="mark">${c.mark}</span></td><td class="num">${c.qty}</td><td>${fracIn(c.length)} <span class="hint">(${ftIn(c.length)}, ${(c.length * 25.4).toFixed(1)} mm)</span></td><td>${esc(c.roles.map((r) => ({ post: 'posts', 'rail-x': 'front and back rails', 'rail-y': 'side rails' }[r] || r)).join(', '))}</td><td>${esc(c.ops.join('; '))}</td></tr>`).join('');
+  const rows = b.cuts.map((c) => `<tr><td><span class="mark">${c.mark}</span></td><td class="num">${c.qty}</td><td>${fracIn(c.length)} <span class="hint">(${ftIn(c.length)}, ${(c.length * 25.4).toFixed(1)} mm)</span></td><td>${esc(c.roles.map((r) => ({ post: 'posts', 'rail-x': 'front and back rails', 'rail-y': 'side rails', riser: 'risers' }[r] || r)).join(', '))}</td><td>${esc(c.ops.join('; '))}</td></tr>`).join('');
   const sticks = Object.values(b.plans).flatMap((p) => p.sticks.map((s) => `<div class="stick" title="Offcut ${fracIn(s.offcut)}">${s.cuts.map((c) => `<span style="width:${(c.length / s.stockLength) * 100}%">${c.mark} ${fracIn(c.length)}</span>`).join('')}</div>`));
   const plan = Object.values(b.plans)[0];
   $('pane-cuts').innerHTML = `
@@ -250,6 +292,17 @@ $('load').onchange = async (e) => {
   e.target.value = '';
 };
 $('print-drawing').onclick = () => window.print();
+
+// Parts library tab: saving or deleting a part rebuilds the catalog.
+mountLibrary($('pane-library'), {
+  onChange: async () => { catalog = makeCatalog(mergeLibrary(catalogData, await listParts())); fillPartSelects(); update(); },
+  onUse: (p) => {
+    if (p.kind === 'caster') { const o = [...$('caster').options].find((x) => x.value === `lib:${p.id}`); if (o) $('caster').value = o.value; else { toast('Add its mounting height first'); return; } }
+    if (p.kind === 'rail') { const o = [...$('stock').options].find((x) => Number(x.value) === Number(p.fields?.lengthIn)); if (o) $('stock').value = o.value; }
+    update();
+    toast(`Using ${p.pn || p.name}`);
+  },
+});
 
 writeForm(loadSaved() || {});
 update({ fit: true });
