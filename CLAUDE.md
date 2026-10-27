@@ -7,3 +7,4 @@
 - Don't scrape mcmaster.com automatically (their robots.txt and terms); the owner checks part numbers and prices by hand.
 - Run `npm test` and `npm run build` before every push. Look at the page (`npm run dev`, http://localhost:4400) after UI changes.
 - The owner's budget is tight: batch changes.
+- **After a user-visible change ships** (new feature, restyle, new screenshots on quiverdesignworks.net), refresh its page on fevergeon.com: in the-feve/fevergeon-site run the `app-pages` skill (`npm run app-shots -- <app id>`, then fix the page text). New apps also get a trail on its homepage map.
