@@ -16,6 +16,8 @@ A free browser app for designing carts, fixtures and tooling from McMaster-Carr 
 - **Outputs**: parts list + CSV, cut list + CSV + cutting plan, 2D drawing (third-angle views, dimensions, balloons, tables, title block), McMaster paste list, save/open JSON, share link, autosave in the browser.
 - **Live at https://extrusion-designer.pages.dev** (2026-10-27). GitHub has `main` (created for Cloudflare's production branch) and the work branch `claude/extrusion-designer-app-5sjogo`.
 - **Exploded view** in the 3D toolbar (BUILD-MAP → *Exploded view*).
+- **Resizable layout** (`app/layout.js`): drag the bars between the settings panel, the 3D view and the tabs (double-click or Home resets, arrow keys nudge); **⧉ Float** pops the 3D view or the tabs into a window you drag by its title bar and resize from the corner, *Dock* puts it back. Sizes and windows are remembered per browser; phones keep the stacked layout.
+- **README → What it needs**: the packages and services the app uses (three.js only at runtime), for reviewers.
 - **Cloudflare Pages project `extrusion-designer`** (created by the owner 2026-10-27), connected to this repo. Build command `npm run build`; the output directory `dist` comes from `wrangler.toml`; Node 22 from `.nvmrc`. No secrets. Each push to a branch makes a preview at `<branch>.extrusion-designer.pages.dev`.
 
 ## Things the owner needs to check (unverified data)

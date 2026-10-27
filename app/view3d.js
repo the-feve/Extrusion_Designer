@@ -43,13 +43,17 @@ export class View3D {
     this.showDecks = true;
     this.explode = 0; // 0 = assembled, 1 = fully exploded
     new ResizeObserver(() => this.resize()).observe(el);
+    window.addEventListener('resize', () => this.resize());
     this.resize();
     const tick = () => { this.controls.update(); this.renderer.render(this.scene, this.camera); requestAnimationFrame(tick); };
     tick();
   }
 
+  // Size from the canvas's own CSS box (the container may also hold a
+  // floating window's title bar).
   resize() {
-    const w = this.el.clientWidth, h = this.el.clientHeight;
+    const c = this.renderer.domElement;
+    const w = c.clientWidth, h = c.clientHeight;
     if (!w || !h) return;
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;

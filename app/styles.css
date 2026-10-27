@@ -52,8 +52,8 @@ legend { color: var(--muted); font-size: .9rem; padding: 0 4px; }
 .brand { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; color: var(--muted); text-decoration: none; }
 .top-actions { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
 
-.layout { flex: 1; display: grid; grid-template-columns: 320px 1fr; min-height: 0; }
-.panel { border-right: 1px solid var(--line); padding: 16px; overflow-y: auto; max-height: calc(100vh - 110px); }
+.layout { flex: 1; display: grid; grid-template-columns: var(--panel-w, 320px) 6px 1fr; min-height: 0; }
+.panel { padding: 16px; overflow-y: auto; max-height: calc(100vh - 110px); }
 .panel section, .panel details { margin-bottom: 18px; }
 .panel details summary { cursor: pointer; color: var(--accent); font-family: var(--font-display); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 10px; }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -69,7 +69,7 @@ legend { color: var(--muted); font-size: .9rem; padding: 0 4px; }
 .status .bad-text { color: var(--bad); }
 
 .stage { display: flex; flex-direction: column; min-width: 0; }
-.viewer { position: relative; height: 52vh; min-height: 320px; background: radial-gradient(ellipse at 50% 40%, #241f18, var(--bg)); border-bottom: 1px solid var(--line); }
+.viewer { position: relative; height: var(--viewer-h, 52vh); min-height: 200px; flex: none; background: radial-gradient(ellipse at 50% 40%, #241f18, var(--bg)); }
 .viewer canvas { display: block; width: 100%; height: 100%; }
 .viewer-tools { position: absolute; top: 10px; left: 10px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .viewer-tools button { padding: 4px 10px; font-size: .85rem; background: rgb(29 26 21 / .85); }
@@ -124,3 +124,32 @@ ol.steps li { margin-bottom: 6px; }
 .viewer-tools button[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
 .viewer-tools .explode-amount { display: flex; align-items: center; gap: 6px; color: var(--text); }
 .viewer-tools .explode-amount input { width: 110px; margin: 0; padding: 0; accent-color: var(--accent); }
+
+/* Resizable layout and floating windows (layout.js) */
+.split { background: var(--line); position: relative; z-index: 2; touch-action: none; }
+.split::after { content: ''; position: absolute; background: var(--muted); border-radius: 2px; opacity: .5; }
+.split:hover, .split:focus-visible, .split.dragging { background: var(--accent); outline: none; }
+.split-v { cursor: col-resize; }
+.split-v::after { width: 2px; height: 28px; left: 2px; top: 50%; margin-top: -14px; }
+.split-h { cursor: row-resize; height: 6px; flex: none; }
+.split-h::after { height: 2px; width: 28px; top: 2px; left: 50%; margin-left: -14px; }
+.dock { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+.dock .tab-body { flex: 1; }
+.stage.viewer-out .split-h, .stage.dock-out .split-h { display: none; }
+.stage.dock-out .viewer { flex: 1; height: auto; }
+.floating { position: fixed !important; z-index: 20; resize: both; overflow: hidden; border: 1px solid var(--accent); border-radius: 8px; box-shadow: 0 18px 48px -12px rgb(0 0 0 / .7); background: var(--surface); display: flex; flex-direction: column; min-width: 320px; min-height: 220px; }
+.floating.viewer { height: auto; }
+.floating .float-bar { display: flex; align-items: center; gap: 8px; padding: 4px 6px 4px 12px; background: var(--surface-2); border-bottom: 1px solid var(--line); cursor: move; user-select: none; font-family: var(--font-display); text-transform: uppercase; letter-spacing: .05em; font-size: .85rem; color: var(--muted); flex: none; touch-action: none; }
+.floating .float-bar button { margin-left: auto; padding: 2px 10px; font-size: .8rem; }
+.floating.viewer canvas { flex: 1; min-height: 0; height: auto; width: 100%; }
+.floating.viewer .viewer-tools { top: 44px; }
+.floating .tab-body { overflow: auto; }
+.float-bar { display: none; }
+.floating > .float-bar { display: flex; }
+.float-toggle { margin-left: auto; }
+.tabs .float-toggle { border: 1px solid var(--line); border-radius: 6px; color: var(--muted); align-self: center; padding: 3px 10px; font-size: .85rem; }
+.floating .float-toggle { display: none; }
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .split, .float-toggle { display: none !important; }
+}

@@ -14,6 +14,7 @@ there is no server, so hosting is free (Cloudflare Pages, static files).
 |---|---|
 | `app/index.html`, `app/styles.css` | The page (Trail & Workshop look, dark, like the other Quiver builders) |
 | `app/main.js` | Form ↔ parameters, runs the engine on every change, fills the tabs, save/share/open |
+| `app/layout.js` | Drag bars between the panel, 3D view and tabs; *Float* pops the 3D view or the tabs into a movable, resizable window (remembered in localStorage `extrusion-designer.layout.v1`; off on phones) |
 | `app/view3d.js` | three.js view: rails, brackets, casters, decks; issue highlighting |
 | `app/shapes.js` | **Our own** rail section and bracket profile, drawn from McMaster's published dimensions |
 | `app/data/catalog.json` | Profiles and parts: part numbers, sizes, prices (only owner-checked ones), `verified` flags |
