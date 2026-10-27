@@ -14,6 +14,8 @@ A free browser app for designing carts, fixtures and tooling from McMaster-Carr 
 - **Build logic** (BUILD-MAP → *Cart template*): posts run through; every level is four rails butting into the post faces; one corner bracket per rail end, placed automatically on the first side that fits (under the rail by default); stem casters in the post ends. Checks prove no two parts overlap, every rail end sits flat on its post, every joint has a bracket whose holes land on T-slots, and the frame is one piece. 15 tests (`npm test`).
 - **Default 24 × 36 × 30 cart**: 4 posts 26", 4 side rails 33", 4 front/back rails 21" (3 ten-foot sticks), 16 brackets 47065T845, 4 casters 47065T336.
 - **Outputs**: parts list + CSV, cut list + CSV + cutting plan, 2D drawing (third-angle views, dimensions, balloons, tables, title block), McMaster paste list, save/open JSON, share link, autosave in the browser.
+- **Live at https://extrusion-designer.pages.dev** (2026-10-27). GitHub has `main` (created for Cloudflare's production branch) and the work branch `claude/extrusion-designer-app-5sjogo`.
+- **Exploded view** in the 3D toolbar (BUILD-MAP → *Exploded view*).
 - **Cloudflare Pages project `extrusion-designer`** (created by the owner 2026-10-27), connected to this repo. Build command `npm run build`; the output directory `dist` comes from `wrangler.toml`; Node 22 from `.nvmrc`. No secrets. Each push to a branch makes a preview at `<branch>.extrusion-designer.pages.dev`.
 
 ## Things the owner needs to check (unverified data)

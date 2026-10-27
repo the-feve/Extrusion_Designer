@@ -224,6 +224,15 @@ document.querySelectorAll('[data-step]').forEach((b) => b.addEventListener('clic
 }));
 document.querySelectorAll('[data-view]').forEach((b) => b.addEventListener('click', () => view?.setView(b.dataset.view)));
 $('show-decks').addEventListener('change', (e) => view?.setDecksVisible(e.target.checked));
+// Exploded view: the button eases parts apart (or back); the slider sets how far.
+$('explode').addEventListener('click', () => {
+  if (!view) return;
+  const on = $('explode').getAttribute('aria-pressed') !== 'true';
+  $('explode').setAttribute('aria-pressed', String(on));
+  document.querySelector('.explode-amount').hidden = !on;
+  view.animateExplode(on ? Number($('explode-amount').value) : 0);
+});
+$('explode-amount').addEventListener('input', (e) => view?.setExplode(Number(e.target.value)));
 document.querySelectorAll('[role="tab"]').forEach((t) => t.addEventListener('click', () => {
   document.querySelectorAll('[role="tab"]').forEach((x) => x.setAttribute('aria-selected', String(x === t)));
   document.querySelectorAll('[data-pane]').forEach((p) => { p.hidden = p.dataset.pane !== t.dataset.tab; });

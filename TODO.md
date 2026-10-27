@@ -19,5 +19,5 @@
 
 ## Outputs
 - [ ] Assembly steps sheet (order of rings, sliding the end-feed nuts in first).
-- [ ] DXF export of the drawing; exploded view.
+- [ ] DXF export of the drawing; an exploded view on the drawing sheet.
 - [ ] Hover a part in 3D → its mark and length.

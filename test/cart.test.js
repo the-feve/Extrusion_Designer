@@ -174,3 +174,19 @@ test('units: parse and format', () => {
   assert.equal(fracIn(0.75), '3/4"');
   assert.equal(ftIn(30), '2\' 6"');
 });
+
+test('exploded view: every joint opens, brackets sit in the gap, nothing moves along its own length', async () => {
+  const { explodeOffsets } = await import('../app/engine/explode.js');
+  const d = buildCart(catalog, { shelves: 1 });
+  const off = explodeOffsets(d);
+  for (const m of d.members) assert.equal(off.get(m.id)[m.axis] || 0, 0, m.name);
+  for (const j of d.joints) {
+    const rail = d.members.find((m) => m.id === j.rail);
+    const a = off.get(j.rail), b = off.get(j.onto);
+    // The post moves away from the rail end along the rail's axis: a gap opens.
+    const dir = j.end === 'start' ? -1 : 1;
+    assert.equal(Math.sign(b[rail.axis] - a[rail.axis]), dir, `${rail.name} ${j.end}`);
+  }
+  for (const h of d.hardware) assert.ok(off.has(h.id));
+  for (const p of d.panels) assert.ok(off.get(p.id)[2] > 0);
+});

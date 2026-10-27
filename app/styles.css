@@ -121,3 +121,6 @@ ol.steps li { margin-bottom: 6px; }
   @page { size: 17in 11in; margin: 0.25in; }
 }
 .top-actions label.button { margin: 0; color: var(--text); font-size: inherit; }
+.viewer-tools button[aria-pressed="true"] { background: var(--accent); color: var(--accent-contrast); border-color: var(--accent); }
+.viewer-tools .explode-amount { display: flex; align-items: center; gap: 6px; color: var(--text); }
+.viewer-tools .explode-amount input { width: 110px; margin: 0; padding: 0; accent-color: var(--accent); }

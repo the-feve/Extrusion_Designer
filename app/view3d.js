@@ -5,6 +5,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { railSection1515, bracketProfile } from './shapes.js';
+import { explodeOffsets } from './engine/explode.js';
 
 const COLORS = { rail: 0xc9ced4, bracket: 0x9aa4ae, caster: 0x3a3d42, wheel: 0x1f2124, deck: 0xc9a56b, bad: 0xf08a6e, pick: 0xe0a93b };
 
@@ -40,6 +41,7 @@ export class View3D {
     this.bracketGeom = bracketGeometry(1.31);
     this.byOwner = new Map();
     this.showDecks = true;
+    this.explode = 0; // 0 = assembled, 1 = fully exploded
     new ResizeObserver(() => this.resize()).observe(el);
     this.resize();
     const tick = () => { this.controls.update(); this.renderer.render(this.scene, this.camera); requestAnimationFrame(tick); };
@@ -94,8 +96,71 @@ export class View3D {
       g.userData.deck = true;
       this.own(p.id, g);
     }
+    // Remember where each part sits assembled and which way it explodes.
+    this.offsets = explodeOffsets(design);
+    for (const [id, objs] of this.byOwner) {
+      const dir = this.offsets.get(id) || [0, 0, 0];
+      for (const o of objs) {
+        o.userData.dir = new THREE.Vector3(...dir);
+        if (o.matrixAutoUpdate) o.userData.base = o.position.clone();
+        else o.userData.baseMatrix = o.matrix.clone();
+      }
+    }
+    const span = new THREE.Box3().setFromObject(this.group).getSize(new THREE.Vector3());
+    this.explodeTravel = Math.max(4, Math.min(12, Math.max(span.x, span.y) * 0.14));
+    this.applyExplode();
     this.bounds = new THREE.Box3().setFromObject(this.group);
     if (fit || !this.fitted) { this.setView('iso'); this.fitted = true; }
+  }
+
+  setExplode(amount) {
+    this.explode = amount;
+    this.applyExplode();
+  }
+
+  applyExplode() {
+    const e = this.explode * (this.explodeTravel || 6);
+    for (const objs of this.byOwner.values()) {
+      for (const o of objs) {
+        const d = o.userData.dir;
+        if (!d) continue;
+        if (o.userData.base) o.position.copy(o.userData.base).addScaledVector(d, e);
+        else if (o.userData.baseMatrix) {
+          o.matrix.copy(o.userData.baseMatrix);
+          const t = new THREE.Vector3().setFromMatrixPosition(o.matrix).addScaledVector(d, e);
+          o.matrix.setPosition(t);
+          o.matrixWorldNeedsUpdate = true;
+        }
+      }
+    }
+  }
+
+  // Ease from the current amount to `to` over ~0.6 s.
+  animateExplode(to) {
+    const from = this.explode, t0 = performance.now(), dur = 600;
+    cancelAnimationFrame(this.explodeRaf);
+    const step = (now) => {
+      const k = Math.min(1, (now - t0) / dur);
+      const ease = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+      this.setExplode(from + (to - from) * ease);
+      if (k < 1) this.explodeRaf = requestAnimationFrame(step);
+      else this.onExplode?.(to);
+      this.refit();
+    };
+    this.explodeRaf = requestAnimationFrame(step);
+  }
+
+  // Keep the current viewing direction, but move in or out so everything fits.
+  refit() {
+    const box = new THREE.Box3().setFromObject(this.group);
+    if (box.isEmpty()) return;
+    const c = box.getCenter(new THREE.Vector3());
+    const r = box.getSize(new THREE.Vector3()).length() / 2;
+    const d = r / Math.sin((this.camera.fov * Math.PI) / 360) * 1.05;
+    const dir = this.camera.position.clone().sub(this.controls.target).normalize();
+    this.controls.target.copy(c);
+    this.camera.position.copy(c).addScaledVector(dir, d);
+    this.controls.update();
   }
 
   setDecksVisible(on) {

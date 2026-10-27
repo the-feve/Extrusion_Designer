@@ -25,6 +25,7 @@ there is no server, so hosting is free (Cloudflare Pages, static files).
 | `app/engine/bom.js` | Cut list (marks A, B, C…), stock plan, hardware list, BOM lines |
 | `app/engine/drawing.js` | The 2D drawing (SVG) |
 | `app/engine/export.js` | CSVs, the McMaster paste list, design JSON |
+| `app/engine/explode.js` | Exploded-view directions per part |
 | `test/cart.test.js` | Build-logic tests (`npm test`) |
 | `scripts/build.mjs`, `scripts/serve.mjs` | Static build to `dist/`; local preview at :4400 |
 | `tools/step_extract.py` | Reads a **local** McMaster STEP to measure it (output is git-ignored) |
@@ -140,6 +141,18 @@ and re-check every pair of solids independently.
   *Order → Paste products and quantities* box. Lines without a part number
   are left out and listed under the box, never silently dropped.
 
+## Exploded view (explode.js, view3d.js)
+
+The **Explode** button in the 3D toolbar eases the parts apart (0.6 s) and
+shows a *Spread* slider. Directions come from the frame, not the template:
+members move out from the frame's centre on their cross axes only (posts
+diagonally, front/back rails in y, side rails in x), so every butt joint
+opens along the rail's axis; each bracket moves halfway between its rail and
+the member it butts into, so it sits in the gap; casters follow their post
+and drop; decks lift. Travel is 14 % of the larger plan size (4"–12") per
+unit of spread; the camera zooms out to fit when the animation ends. A test
+checks that every joint opens and nothing moves along its own length.
+
 ## Lessons carried over from the other builders
 
 - **Browser-only, no server cost** (Coin Designer): geometry in the browser,
@@ -160,4 +173,4 @@ and re-check every pair of solids independently.
 
 See TODO.md: plate casters (no machining), cut-to-length and pre-tapped rail
 options, mid-span supports, panels in the slots, more templates (fixture
-table, workbench), DXF/PDF drawing export.
+table, workbench), DXF/PDF drawing export, an exploded view on the 2D drawing.
