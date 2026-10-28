@@ -1,6 +1,7 @@
 # Extrusion Designer: working rules
 
-- Read `HANDOFF.md` first, then `TODO.md`. **Keep `docs/BUILD-MAP.md` (how the build logic works) up to date** whenever the logic changes, and keep HANDOFF/TODO current.
+- **Keep it simple.** Pick the smallest change that does the job: no new frameworks, services, build steps or abstractions unless the task needs them. Plain HTML/CSS/JS (or the existing stack) first; delete before adding.
+- Read `HANDOFF.md` first (the short current state), then `TODO.md`. **Keep `docs/BUILD-MAP.md` (how the build logic works) up to date** whenever the logic changes, and keep HANDOFF/TODO current. Keep HANDOFF short (under about 150 lines); dated session notes go in `docs/history.md` (newest first).
 - A Quiver Design Works app (owner: Matthew Fevergeon). It will launch from quiverdesignworks.net like the other builders (the-feve/quiverdesignworks-site). Zero running cost: static files only, no server.
 - Units are inches inside the engine. Parts data lives only in `app/data/catalog.json`; mark anything not checked on mcmaster.com `"verified": false`. Never invent part numbers or prices.
 - **Never commit McMaster CAD files (STEP, 2D PDFs) or geometry copied from them**: their terms forbid redistribution and this repo is public. `reference/mcmaster/` and `app/data/geometry/` are git-ignored. Draw shapes from published dimensions (`app/shapes.js`).

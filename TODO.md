@@ -4,7 +4,8 @@
 - [ ] Check caster mounting height for 47065T336 / 47065T919 (guessed 4") and update `app/data/catalog.json`.
 - [ ] Confirm rail part numbers per length (4658N41 family) and whether you want prices shown at all.
 - [ ] Test-paste the McMaster list into *Order → Paste products and quantities*.
-- [ ] Cloudflare Pages project (build `npm run build`, output `dist`); then a card in quiverdesignworks.net Apps and a subdomain (e.g. `extrusions.quiverdesignworks.net`).
+- [x] Cloudflare Pages project `extrusion-designer` (2026-10-27) and a Beta card in quiverdesignworks.net Apps (2026-10-27).
+- [ ] A subdomain (e.g. `extrusions.quiverdesignworks.net`, a custom domain on the Pages project); then change the Apps card's `url` in quiverdesignworks-site and the links on fevergeon.com.
 - [ ] Decide: email McMaster (eprocurement@mcmaster.com) for written OK to use part numbers in a public tool?
 
 ## Next in the build logic
