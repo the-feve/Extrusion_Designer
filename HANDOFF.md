@@ -2,19 +2,19 @@
 
 _Last updated: 2026-10-27 · Owner: Matthew Fevergeon_
 
-Read this first, then [TODO.md](TODO.md). How the build logic works: [docs/BUILD-MAP.md](docs/BUILD-MAP.md). McMaster parts research: [docs/research/mcmaster-1.5-series.md](docs/research/mcmaster-1.5-series.md).
+The short current state. Read this first, then [TODO.md](TODO.md). Dated session notes: [docs/history.md](docs/history.md). How the build logic works: [docs/BUILD-MAP.md](docs/BUILD-MAP.md). McMaster parts research: [docs/research/mcmaster-1.5-series.md](docs/research/mcmaster-1.5-series.md).
 
 ## What this is
 
 A free browser app for designing carts, fixtures and tooling from McMaster-Carr T-slotted aluminum framing (1-1/2" series first). It gives a 3D view, parts list, cut list with a cutting plan, a 2D drawing (SVG, printable to PDF) and a list to paste into McMaster's order form. Same pattern as the Coin Designer and the desk planner: everything runs in the browser, static hosting, no running cost.
 
-## State (v0.1, 2026-10-27, branch `claude/extrusion-designer-app-5sjogo`)
+## State (v0.1)
 
 - **Cart template**: width, length, height (floor to top of frame, casters included), casters or none, 0–8 intermediate shelves (even or custom heights), decks on top / shelves / bottom, deck thickness, bottom-rail lift, saw kerf.
 - **Build logic** (BUILD-MAP → *Cart template*): posts run through; every level is four rails butting into the post faces; one corner bracket per rail end, placed automatically on the first side that fits (under the rail by default); stem casters in the post ends. Checks prove no two parts overlap, every rail end sits flat on its post, every joint has a bracket whose holes land on T-slots, and the frame is one piece. 15 tests (`npm test`).
 - **Default 24 × 36 × 30 cart**: 4 posts 26", 4 side rails 33", 4 front/back rails 21" (3 ten-foot sticks), 16 brackets 47065T845, 4 casters 47065T336.
 - **Outputs**: parts list + CSV, cut list + CSV + cutting plan, 2D drawing (third-angle views, dimensions, balloons, tables, title block), McMaster paste list, save/open JSON, share link, autosave in the browser.
-- **Live at https://extrusion-designer.pages.dev** (2026-10-27). GitHub has `main` (created for Cloudflare's production branch) and the work branch `claude/extrusion-designer-app-5sjogo`.
+- **Live at https://extrusion-designer.pages.dev** (2026-10-27), deployed from `main`. Linked from quiverdesignworks.net Apps (Beta) and fevergeon.com `/cad-software/extrusion-designer/`.
 - **Exploded view** in the 3D toolbar (BUILD-MAP → *Exploded view*).
 - **Resizable layout** (`app/layout.js`): drag the bars between the settings panel, the 3D view and the tabs (double-click or Home resets, arrow keys nudge); **⧉ Float** pops the 3D view or the tabs into a window you drag by its title bar and resize from the corner, *Dock* puts it back. Sizes and windows are remembered per browser; phones keep the stacked layout.
 - **Risers** (sidebar → Risers, *+ Add a riser*): vertical rails on any top rail, height and position set per riser, braced with McMaster 45° diagonal braces (6/12/18/24") on either or both sides; the top deck is cut around them; checks refuse risers off the rail, too short for their brace, or braces that run into a post or each other (BUILD-MAP → *Risers*). **Brace geometry is assumed** (1.5" section, outer edge = listed length) until checked against McMaster's drawing.
