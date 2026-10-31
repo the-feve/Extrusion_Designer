@@ -8,3 +8,18 @@
 - Run `npm test` and `npm run build` before every push. Look at the page (`npm run dev`, http://localhost:4400) after UI changes.
 - The owner's budget is tight: batch changes.
 - **After a user-visible change ships** (new feature, restyle, new screenshots on quiverdesignworks.net), refresh its page on fevergeon.com: in the-feve/fevergeon-site run the `app-pages` skill (`npm run app-shots -- <app id>`, then fix the page text). New apps also get a trail on its homepage map.
+
+## HANK (project status)
+
+This project has a status card in the-feve/00_Hank_Projects: the `projects/*.json` file(s)
+whose `repos` list this repo (format: `docs/card-format.md` there). Matt reads it at
+fevergeon.com/hank/.
+
+- When Matt says **park it**, or before you finish a session that changed anything:
+  update HANDOFF.md, then the card: where it's at, the ONE next step, Matt's to-dos
+  (keep his ticks), a fresh standalone prompt, this session's id, today's date.
+  Follow `.claude/skills/hank/SKILL.md` → *park it* in that repo.
+- Cloud session: attach it with `add_repo` (push), clone, pull right before editing (the page
+  commits Matt's ticks any time), edit, `node check.mjs --fix`, commit to its `main`.
+  On the PC: `C:\Users\matth\repos\00_Hank_Projects`.
+- Keep it short and plain: Matt has ADHD and reads it on his phone.
