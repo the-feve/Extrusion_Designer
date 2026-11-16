@@ -8,6 +8,7 @@
 - Run `npm test` and `npm run build` before every push. Look at the page (`npm run dev`, http://localhost:4400) after UI changes.
 - The owner's budget is tight: batch changes.
 - **After a user-visible change ships** (new feature, restyle, new screenshots on quiverdesignworks.net), refresh its page on fevergeon.com: in the-feve/fevergeon-site run the `app-pages` skill (`npm run app-shots -- <app id>`, then fix the page text). New apps also get a trail on its homepage map.
+- **Design and UX:** follow the shared rules in the-feve/fevergeon-site `docs/design-brief.md` §0 and the-feve/AI_tools_and_tips `website-design/` (UX checklist, the AI-look list). Attach fevergeon-site so its design skills load, and check UI work against the checklist before calling it done.
 
 ## HANK (project status)
 
